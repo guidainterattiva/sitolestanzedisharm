@@ -150,12 +150,12 @@ nav.sc .nc:hover{background:var(--dk);color:var(--w)}
 .rh{padding:4rem 5rem 2.5rem;background:var(--off);display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--off);padding:0 5rem 4rem}
 .rc{position:relative;overflow:hidden;aspect-ratio:5/3;cursor:pointer;background:#f3efe8}.rc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;background:#f3efe8;padding:.35rem;transition:transform .35s ease}.rc:hover img{transform:scale(1.02)}
-.rc-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.05) 55%,transparent 100%);
+.rc-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.15) 100%);
   display:flex;flex-direction:column;justify-content:flex-end;padding:1.8rem 2rem}
-.rn{font-size:.5rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#ffffff;margin-bottom:.4rem}
-.rm{font-family:var(--ser);font-size:1.7rem;font-weight:300;color:var(--w);margin-bottom:.2rem;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.rn{font-size:.5rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#ffffff;margin-bottom:.4rem;text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.rm{font-family:var(--ser);font-size:1.7rem;font-weight:400;color:var(--w);margin-bottom:.2rem;text-shadow:0 2px 12px rgba(0,0,0,.95),0 1px 4px rgba(0,0,0,1)}
 .rm em{font-style:italic}
-.rd{font-size:.68rem;color:rgba(255,255,255,.5);margin-bottom:.8rem}
+.rd{font-size:.68rem;color:rgba(255,255,255,.75);margin-bottom:.8rem;text-shadow:0 1px 6px rgba(0,0,0,.9)}
 .rct{font-size:.55rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);
   opacity:0;transform:translateY(6px);transition:all .3s}
 .rc:hover .rct{opacity:1;transform:translateY(0)}
@@ -310,7 +310,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <!-- NAV -->
-<nav id="nav" class="sc">
+<nav id="nav" class="">
   <div style="display:flex;align-items:center;gap:.8rem">
     <button class="hb" onclick="tmm()" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nl" onclick="sp('home')">
@@ -375,7 +375,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
     </div>
     <span class="cl" onclick="sp('stanze')">Vedi tutte</span>
   </div>
-  <div class="rg"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2010.28.32.jpeg" alt="Giusy - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.23.jpeg" alt="Angela - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.37.jpeg" alt="Ornello - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
+  <div class="rg"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
 
   
 <!-- MAPPA -->
@@ -437,7 +437,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 <div id="page-stanze" class="page">
   <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_002.jpeg" alt="Le Stanze"><div class="ih-ov"><div class="ih-t"><div class="sl" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Il progetto</div><h1>Le nostre stanze a <em>Sharm</em></h1></div></div></div>
   <div class="rh"><p class="sb" style="margin:0;max-width:600px">Camere e appartamenti in residence e resort selezionati nel Domina Coral Bay, con assistenza italiana.</p></div>
-  <div class="rg" style="padding-top:0"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2010.28.32.jpeg" alt="Giusy - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.23.jpeg" alt="Angela - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.37.jpeg" alt="Ornello - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
+  <div class="rg" style="padding-top:0"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
 </div>
 
 <div id="page-gabriele" class="page">
@@ -1604,7 +1604,7 @@ function bk(){
      BOTTONE ADMIN (nascosto in basso a destra)
      ══════════════════════════════════════════ -->
 <div id="page-prossimamente" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2010.28.32.jpeg" alt="Giusy - Prossimamente Marzo 2027">
+  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy - Prossimamente Marzo 2027">
     <div class="ih-ov"><div class="ih-t">
       <div class="sl">Le Stanze di Sharm</div>
       <h1>La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></h1>
@@ -1634,7 +1634,7 @@ function bk(){
     </div>
   </div></div>
   </div><div id="page-angela" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.23.jpeg" alt="Angela - Prossimamente Marzo 2027">
+  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela - Prossimamente Marzo 2027">
     <div class="ih-ov"><div class="ih-t">
       <div class="sl">Le Stanze di Sharm</div>
       <h1>La Stanza di <em>Angela - Prossimamente Marzo 2027</em></h1>
@@ -1664,7 +1664,7 @@ function bk(){
     </div>
   </div></div>
   </div><div id="page-ornello" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.37.jpeg" alt="Ornello - Prossimamente Marzo 2027">
+  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello - Prossimamente Marzo 2027">
     <div class="ih-ov"><div class="ih-t">
       <div class="sl">Le Stanze di Sharm</div>
       <h1>La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></h1>
@@ -1763,7 +1763,7 @@ function bk(){
         </div>
       <div style="font-size:.7rem;letter-spacing:.12em;color:#8B6914;text-transform:uppercase;font-weight:700;margin:1rem 0 .5rem;padding-bottom:.4rem;border-bottom:1px solid #e8d98a">La Fontana</div>
       <div style="display:flex;align-items:center;gap:.9rem;padding:.7rem;border:1px solid #eee;border-radius:8px;margin-bottom:.5rem;background:#fff">
-          <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2010.28.32.jpeg" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
+          <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
           <div style="flex:1;min-width:0">
             <div style="font-weight:700;color:#1a1a1a">La Stanza di Giusy - Prossimamente Marzo 2027</div>
             <div style="font-size:.8rem;color:#999;margin-top:.15rem">La Fontana</div>
@@ -1771,7 +1771,7 @@ function bk(){
           <button onclick="admEditRoom(3)" style="background:#f5f0e8;border:1px solid #e0d0a0;padding:.45rem .9rem;border-radius:5px;cursor:pointer;font-size:.82rem;color:#8B6914;font-weight:600;white-space:nowrap">✏️ Modifica</button>
           <button onclick="admDelRoom(3)" style="background:#fff0f0;border:1px solid #fcc;padding:.45rem .9rem;border-radius:5px;cursor:pointer;font-size:.82rem;color:#c00;white-space:nowrap">🗑</button>
         </div><div style="display:flex;align-items:center;gap:.9rem;padding:.7rem;border:1px solid #eee;border-radius:8px;margin-bottom:.5rem;background:#fff">
-          <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.23.jpeg" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
+          <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
           <div style="flex:1;min-width:0">
             <div style="font-weight:700;color:#1a1a1a">La Stanza di Angela - Prossimamente Marzo 2027</div>
             <div style="font-size:.8rem;color:#999;margin-top:.15rem">La Fontana</div>
@@ -1779,7 +1779,7 @@ function bk(){
           <button onclick="admEditRoom(4)" style="background:#f5f0e8;border:1px solid #e0d0a0;padding:.45rem .9rem;border-radius:5px;cursor:pointer;font-size:.82rem;color:#8B6914;font-weight:600;white-space:nowrap">✏️ Modifica</button>
           <button onclick="admDelRoom(4)" style="background:#fff0f0;border:1px solid #fcc;padding:.45rem .9rem;border-radius:5px;cursor:pointer;font-size:.82rem;color:#c00;white-space:nowrap">🗑</button>
         </div><div style="display:flex;align-items:center;gap:.9rem;padding:.7rem;border:1px solid #eee;border-radius:8px;margin-bottom:.5rem;background:#fff">
-          <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/WhatsApp%20Image%202026-03-27%20at%2011.29.37.jpeg" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
+          <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
           <div style="flex:1;min-width:0">
             <div style="font-weight:700;color:#1a1a1a">La Stanza di Ornello - Prossimamente Marzo 2027</div>
             <div style="font-size:.8rem;color:#999;margin-top:.15rem">La Fontana</div>
@@ -1794,7 +1794,7 @@ function bk(){
 
   <!-- TAB EDIT -->
   <div id="adm-tab-edit" style="padding: 1.5rem; display: none;">
-    <div id="adm-edit-title" style="font-size:1rem;font-weight:700;color:#1a1a1a;margin-bottom:1rem">✏️ Modifica — La Stanza di Ornello</div>
+    <div id="adm-edit-title" style="font-size:1rem;font-weight:700;color:#1a1a1a;margin-bottom:1rem">✏️ Modifica — La Stanza di Ornello - Prossimamente Marzo 2027</div>
     <div style="display:grid;gap:.9rem">
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
