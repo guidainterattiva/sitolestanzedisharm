@@ -296,6 +296,15 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   .stats-g{grid-template-columns:1fr;max-width:280px}
   .cc-g{grid-template-columns:1fr;max-width:320px}
 }
+
+/* POPUP PROMO */
+#promo-popup{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:1rem}
+#promo-popup.on{display:flex}
+.pp-box{position:relative;max-width:480px;width:100%;border-radius:4px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);animation:ppIn .4s ease}
+@keyframes ppIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.pp-box img{width:100%;display:block}
+.pp-close{position:absolute;top:.7rem;right:.8rem;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:36px;height:36px;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s}
+.pp-close:hover{background:rgba(0,0,0,.85)}
 </style>
 </head>
 <body>
@@ -310,7 +319,14 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <!-- NAV -->
-<nav id="nav" class="">
+<!-- POPUP PROMO -->
+<div id="promo-popup">
+  <div class="pp-box">
+    <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/Pop-up.jpg" alt="Promozione Le Stanze di Sharm">
+    <button class="pp-close" onclick="document.getElementById('promo-popup').classList.remove('on')" aria-label="Chiudi">✕</button>
+  </div>
+</div>
+<nav id="nav" class="sc">
   <div style="display:flex;align-items:center;gap:.8rem">
     <button class="hb" onclick="tmm()" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nl" onclick="sp('home')">
@@ -375,7 +391,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
     </div>
     <span class="cl" onclick="sp('stanze')">Vedi tutte</span>
   </div>
-  <div class="rg"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
+  <div class="rg"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana – Operativi da Marzo 2027</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
 
   
 <!-- MAPPA -->
@@ -437,7 +453,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 <div id="page-stanze" class="page">
   <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_002.jpeg" alt="Le Stanze"><div class="ih-ov"><div class="ih-t"><div class="sl" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Il progetto</div><h1>Le nostre stanze a <em>Sharm</em></h1></div></div></div>
   <div class="rh"><p class="sb" style="margin:0;max-width:600px">Camere e appartamenti in residence e resort selezionati nel Domina Coral Bay, con assistenza italiana.</p></div>
-  <div class="rg" style="padding-top:0"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello - Prossimamente Marzo 2027" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
+  <div class="rg" style="padding-top:0"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana – Operativi da Marzo 2027</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
 </div>
 
 <div id="page-gabriele" class="page">
@@ -462,6 +478,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       <div class="bf"><h3>Verifica disponibilità</h3>
         <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
         <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
         <div class="ff"><label>Arrivo</label><input type="date"></div>
         <div class="ff"><label>Partenza</label><input type="date"></div>
         <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
@@ -493,6 +510,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       <div class="bf"><h3>Verifica disponibilità</h3>
         <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
         <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
         <div class="ff"><label>Arrivo</label><input type="date"></div>
         <div class="ff"><label>Partenza</label><input type="date"></div>
         <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
@@ -524,6 +542,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       <div class="bf"><h3>Verifica disponibilità</h3>
         <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
         <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
         <div class="ff"><label>Arrivo</label><input type="date"></div>
         <div class="ff"><label>Partenza</label><input type="date"></div>
         <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
@@ -643,7 +662,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
     <p class="sb" style="max-width:460px;text-align:center;margin-bottom:2.5rem">Per informazioni o prenotazioni contattaci direttamente.<br>Rispondiamo sempre in italiano.</p>
     <div class="cc-g">
       <div class="cc"><div class="cc-i"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto"><circle cx="18" cy="18" r="18" fill="#25D366"></circle><path d="M18 6.5C11.6 6.5 6.5 11.6 6.5 18c0 2.1.6 4.1 1.6 5.8L6.5 29.5l5.9-1.5c1.6.9 3.5 1.4 5.5 1.4 6.4 0 11.5-5.1 11.5-11.5S24.4 6.5 18 6.5zm5.8 15.7c-.2.6-1.3 1.2-1.8 1.2-.4 0-.9.1-2.8-.6-2.4-.9-3.9-3.3-4-3.4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .5.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .5-.1.1-.2.3-.3.4-.1.1-.3.3-.1.6.2.3.7 1.1 1.5 1.8.7.6 1.4.9 1.7 1 .2.1.4.1.5-.1.2-.2.6-.7.8-.9.2-.2.4-.2.6-.1l1.9.9c.2.1.3.2.3.4 0 .1.1.5-.1 1z" fill="white"></path></svg></div><h3 data-tid="cc-wa">WhatsApp</h3><div style="font-size:.75rem;color:var(--mid);margin-bottom:.2rem">Massimiliano</div><a href="https://wa.me/393932626399">+39 393 2626399</a></div>
-      <div class="cc"><div class="cc-i">✉️</div><h3 data-tid="cc-email">Email</h3><a id="cc-email-link" href="#" onclick="this.href='mailto:'+['desantismassimiliano1979','gmail.com'].join('@');return true;" style="cursor:pointer">Scrivi una email</a></div>
+      <div class="cc"><div class="cc-i">✉️</div><h3 data-tid="cc-email">Email</h3><a id="cc-email-link" href="#" onclick="this.href='mailto:'+['info','lestanzedisharm.com'].join('@');return true;" style="cursor:pointer">Scrivi una email</a></div>
       <div class="cc"><div class="cc-i">🚗</div><h3 data-tid="cc-transfer">Transfer</h3><a href="https://wa.me/201014201414">Khaled +20 101 4201414</a></div>
     </div>
     <div style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(0,0,0,.07);width:100%;max-width:680px;display:flex;flex-direction:column;align-items:center">
@@ -1582,14 +1601,19 @@ function bk(){
   if(!pg)return;
   const nome=pg.querySelector('input[type=text]')?.value||'';
   const email=pg.querySelector('input[type=email]')?.value||'';
+  const telefono=pg.querySelector('input[type=tel]')?.value||'';
   const arrivo=pg.querySelectorAll('input[type=date]')[0]?.value||'';
   const partenza=pg.querySelectorAll('input[type=date]')[1]?.value||'';
   const ospiti=pg.querySelector('input[type=number]')?.value||'';
   const stanza=pg.querySelector('.ih-t h1')?.innerText||'Stanza';
   if(!nome||!email){alert('Inserisci nome e email per continuare.');return;}
+  if(arrivo && partenza && partenza < arrivo){
+    alert('⚠️ La data di partenza non può essere precedente alla data di arrivo. Controlla le date e riprova.');return;
+  }
   const subj=encodeURIComponent('Richiesta disponibilità – '+stanza);
   const body=encodeURIComponent(
     'Nome: '+nome+'\n'+
+    'Telefono: '+telefono+'\n'+
     'Email: '+email+'\n'+
     'Arrivo: '+arrivo+'\n'+
     'Partenza: '+partenza+'\n'+
@@ -1597,23 +1621,23 @@ function bk(){
     'Stanza: '+stanza+'\n\n'+
     'Note: '+(pg.querySelector('textarea')?.value||'—')
   );
-  window.location.href='mailto:'+['desantismassimiliano1979','gmail.com'].join('@')+'?subject='+subj+'&body='+body;
+  window.location.href='mailto:'+['info','lestanzedisharm.com'].join('@')+'?subject='+subj+'&body='+body;
 }
 </script>
 <!-- ══════════════════════════════════════════
      BOTTONE ADMIN (nascosto in basso a destra)
      ══════════════════════════════════════════ -->
 <div id="page-prossimamente" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy - Prossimamente Marzo 2027">
+  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy">
     <div class="ih-ov"><div class="ih-t">
       <div class="sl">Le Stanze di Sharm</div>
-      <h1>La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></h1>
+      <h1>La Stanza di <em>Giusy</em></h1>
     </div></div>
   </div>
   <div class="rd-wrap"><div class="rd-g">
     <div>
       <div class="sl" style="color:#8B6914;text-shadow:none">La struttura</div>
-      <h2 class="sh2">La Stanza di <em>Giusy - Prossimamente Marzo 2027</em></h2>
+      <h2 class="sh2">La Stanza di <em>Giusy</em></h2>
       <p class="sb"></p>
       <p class="sb"></p>
       <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
@@ -1625,6 +1649,7 @@ function bk(){
       <div class="bf"><h3>Verifica disponibilità</h3>
         <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
         <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
         <div class="ff"><label>Arrivo</label><input type="date"></div>
         <div class="ff"><label>Partenza</label><input type="date"></div>
         <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
@@ -1634,16 +1659,16 @@ function bk(){
     </div>
   </div></div>
   </div><div id="page-angela" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela - Prossimamente Marzo 2027">
+  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela">
     <div class="ih-ov"><div class="ih-t">
       <div class="sl">Le Stanze di Sharm</div>
-      <h1>La Stanza di <em>Angela - Prossimamente Marzo 2027</em></h1>
+      <h1>La Stanza di <em>Angela</em></h1>
     </div></div>
   </div>
   <div class="rd-wrap"><div class="rd-g">
     <div>
       <div class="sl" style="color:#8B6914;text-shadow:none">La struttura</div>
-      <h2 class="sh2">La Stanza di <em>Angela - Prossimamente Marzo 2027</em></h2>
+      <h2 class="sh2">La Stanza di <em>Angela</em></h2>
       <p class="sb"></p>
       <p class="sb"></p>
       <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
@@ -1655,6 +1680,7 @@ function bk(){
       <div class="bf"><h3>Verifica disponibilità</h3>
         <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
         <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
         <div class="ff"><label>Arrivo</label><input type="date"></div>
         <div class="ff"><label>Partenza</label><input type="date"></div>
         <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
@@ -1664,16 +1690,16 @@ function bk(){
     </div>
   </div></div>
   </div><div id="page-ornello" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello - Prossimamente Marzo 2027">
+  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello">
     <div class="ih-ov"><div class="ih-t">
       <div class="sl">Le Stanze di Sharm</div>
-      <h1>La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></h1>
+      <h1>La Stanza di <em>Ornello</em></h1>
     </div></div>
   </div>
   <div class="rd-wrap"><div class="rd-g">
     <div>
       <div class="sl" style="color:#8B6914;text-shadow:none">La struttura</div>
-      <h2 class="sh2">La Stanza di <em>Ornello - Prossimamente Marzo 2027</em></h2>
+      <h2 class="sh2">La Stanza di <em>Ornello</em></h2>
       <p class="sb"></p>
       <p class="sb"></p>
       <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
@@ -1685,6 +1711,7 @@ function bk(){
       <div class="bf"><h3>Verifica disponibilità</h3>
         <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
         <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
         <div class="ff"><label>Arrivo</label><input type="date"></div>
         <div class="ff"><label>Partenza</label><input type="date"></div>
         <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
@@ -1703,7 +1730,7 @@ function bk(){
     <div style="font-size:.75rem;letter-spacing:.15em;color:#8B6914;text-transform:uppercase;margin-bottom:.5rem">Le Stanze di Sharm</div>
     <div style="font-size:1.2rem;font-weight:700;margin-bottom:1.2rem;color:#1a1a1a">Accesso Admin</div>
     <input id="adm-pwd-input" type="password" placeholder="Password" style="width:100%;padding:.8rem;border:1px solid #ddd;border-radius:6px;font-size:1rem;box-sizing:border-box;margin-bottom:.5rem" onkeydown="if(event.key==='Enter')admVerifyPwd()">
-    <div id="adm-pwd-err" style="color:#c00;font-size:.85rem;min-height:1.2rem;margin-bottom:.5rem"></div>
+    <div id="adm-pwd-err" style="color:#c00;font-size:.85rem;min-height:1.2rem;margin-bottom:.5rem">❌ Password errata</div>
     <div style="display:flex;gap:.6rem">
       <button onclick="admVerifyPwd()" style="flex:1;background:#8B6914;color:#fff;border:none;padding:.8rem;border-radius:6px;cursor:pointer;font-weight:600">Entra</button>
       <button onclick="document.getElementById('adm-pwd-overlay').style.display='none'" style="flex:1;background:#eee;color:#333;border:none;padding:.8rem;border-radius:6px;cursor:pointer">Annulla</button>
@@ -1765,7 +1792,7 @@ function bk(){
       <div style="display:flex;align-items:center;gap:.9rem;padding:.7rem;border:1px solid #eee;border-radius:8px;margin-bottom:.5rem;background:#fff">
           <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
           <div style="flex:1;min-width:0">
-            <div style="font-weight:700;color:#1a1a1a">La Stanza di Giusy - Prossimamente Marzo 2027</div>
+            <div style="font-weight:700;color:#1a1a1a">La Stanza di Giusy</div>
             <div style="font-size:.8rem;color:#999;margin-top:.15rem">La Fontana</div>
           </div>
           <button onclick="admEditRoom(3)" style="background:#f5f0e8;border:1px solid #e0d0a0;padding:.45rem .9rem;border-radius:5px;cursor:pointer;font-size:.82rem;color:#8B6914;font-weight:600;white-space:nowrap">✏️ Modifica</button>
@@ -1773,7 +1800,7 @@ function bk(){
         </div><div style="display:flex;align-items:center;gap:.9rem;padding:.7rem;border:1px solid #eee;border-radius:8px;margin-bottom:.5rem;background:#fff">
           <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
           <div style="flex:1;min-width:0">
-            <div style="font-weight:700;color:#1a1a1a">La Stanza di Angela - Prossimamente Marzo 2027</div>
+            <div style="font-weight:700;color:#1a1a1a">La Stanza di Angela</div>
             <div style="font-size:.8rem;color:#999;margin-top:.15rem">La Fontana</div>
           </div>
           <button onclick="admEditRoom(4)" style="background:#f5f0e8;border:1px solid #e0d0a0;padding:.45rem .9rem;border-radius:5px;cursor:pointer;font-size:.82rem;color:#8B6914;font-weight:600;white-space:nowrap">✏️ Modifica</button>
@@ -1781,7 +1808,7 @@ function bk(){
         </div><div style="display:flex;align-items:center;gap:.9rem;padding:.7rem;border:1px solid #eee;border-radius:8px;margin-bottom:.5rem;background:#fff">
           <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" style="width:64px;height:48px;object-fit:cover;border-radius:5px;flex-shrink:0">
           <div style="flex:1;min-width:0">
-            <div style="font-weight:700;color:#1a1a1a">La Stanza di Ornello - Prossimamente Marzo 2027</div>
+            <div style="font-weight:700;color:#1a1a1a">La Stanza di Ornello</div>
             <div style="font-size:.8rem;color:#999;margin-top:.15rem">La Fontana</div>
           </div>
           <button onclick="admEditRoom(5)" style="background:#f5f0e8;border:1px solid #e0d0a0;padding:.45rem .9rem;border-radius:5px;cursor:pointer;font-size:.82rem;color:#8B6914;font-weight:600;white-space:nowrap">✏️ Modifica</button>
@@ -2173,8 +2200,8 @@ function rebuildRoomGrids(doc) {
   const spanSt = "font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase";
 
   const dominaLbl = `<div class="rg-label" style="${labelBase}"><span style="${spanSt}">Domina Coral Bay</span></div>`;
-  const fontanaLblFull = `<div class="rg-label" style="${labelBase};padding-top:1.5rem"><span style="${spanSt}">La Fontana</span></div>`;
-  const fontanaLblPross = `<div class="rg-label" style="${labelBase};padding-top:1.5rem"><span style="${spanSt}">La Fontana</span><span style="font-size:.8rem;color:#999;font-style:italic">Prossimamente</span></div>`;
+  const fontanaLblFull = `<div class="rg-label" style="${labelBase};padding-top:1.5rem"><span style="${spanSt}">La Fontana – Operativi da Marzo 2027</span></div>`;
+  const fontanaLblPross = `<div class="rg-label" style="${labelBase};padding-top:1.5rem"><span style="${spanSt}">La Fontana – Operativi da Marzo 2027</span><span style="font-size:.8rem;color:#999;font-style:italic">Prossimamente</span></div>`;
 
   // Home grid (La Fontana appare solo se ha stanze)
   let homeInner = dominaLbl + domina.map((r,i) => buildRoomCard(r, i+1)).join('');
@@ -2271,6 +2298,7 @@ function buildRoomPageHTML(r) {
       <div class="bf"><h3>Verifica disponibilità</h3>
         <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
         <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
         <div class="ff"><label>Arrivo</label><input type="date"></div>
         <div class="ff"><label>Partenza</label><input type="date"></div>
         <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
@@ -2299,4 +2327,18 @@ document.getElementById('adm-pwd-overlay').addEventListener('click', function(e)
 </script>
 
 
+<script>
+// Popup promo - mostra dopo 1s se non già visto
+(function(){
+  try{if(!sessionStorage.getItem('ppShown')){
+    setTimeout(function(){
+      document.getElementById('promo-popup').classList.add('on');
+      sessionStorage.setItem('ppShown','1');
+    },1000);
+    document.getElementById('promo-popup').addEventListener('click',function(e){
+      if(e.target===this)this.classList.remove('on');
+    });
+  }}catch(e){}
+})();
+</script>
 </body></html>
