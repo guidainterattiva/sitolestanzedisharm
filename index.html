@@ -17,6 +17,22 @@ body{font-family:var(--san);background:var(--w);color:var(--dk);overflow-x:hidde
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 
+
+/* PAGE HEADER (no photo) */
+.ph{margin-top:68px;background:var(--dk);padding:3rem 5rem 3.2rem;
+  display:flex;align-items:center;gap:2.2rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.ph-logo{width:72px;height:72px;border-radius:50%;object-fit:contain;object-position:center;background:#fff;
+  border:1px solid rgba(255,255,255,.2);flex-shrink:0}
+.ph-txt .sl{color:rgba(255,255,255,.45);text-shadow:none;margin-bottom:.6rem}
+.ph-txt .sl::before{background:rgba(255,255,255,.25)}
+.ph-txt h1{font-family:var(--ser);font-size:clamp(1.8rem,4vw,3rem);font-weight:300;
+  color:var(--w);line-height:1.15}
+.ph-txt h1 em{font-style:italic}
+@media(max-width:600px){
+  .ph{padding:2rem 1.5rem 2.2rem;gap:1.4rem}
+  .ph-logo{width:54px;height:54px}
+}
+
 /* LIGHTBOX */
 .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.95);align-items:center;justify-content:center}
 .lb.on{display:flex}
@@ -502,18 +518,13 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-stanze" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_002.jpeg" alt="Le Stanze"><div class="ih-ov"><div class="ih-t"><div class="sl" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Il progetto</div><h1>Le nostre stanze a <em>Sharm</em></h1></div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Il progetto</div><h1>Le nostre stanze a <em>Sharm</em></h1></div></div>
   <div class="rh"><p class="sb" style="margin:0;max-width:600px">Camere e appartamenti in residence e resort selezionati nel Domina Coral Bay, con assistenza italiana.</p></div>
   <div class="rg" style="padding-top:0"><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">Domina Coral Bay</span></div><div class="rc" onclick="sp('gabriele')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele" loading="lazy"><div class="rc-ov"><div class="rn">01 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Gabriele</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('valentina')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina" loading="lazy"><div class="rc-ov"><div class="rn">02 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Valentina</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia" loading="lazy"><div class="rc-ov"><div class="rn">03 · Domina Coral Bay</div><div class="rm">La Stanza di <em>Giorgia</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rg-label" style="grid-column:1/-1;padding:.5rem 0 .2rem;border-bottom:1px solid #c9a84c;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;padding-top:1.5rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#8B6914;letter-spacing:.12em;text-transform:uppercase">La Fontana – Operativi da Marzo 2027</span></div><div class="rc" onclick="sp('prossimamente')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy" loading="lazy"><div class="rc-ov"><div class="rn">04 · La Fontana</div><div class="rm">La Stanza di <em>Giusy</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela" loading="lazy"><div class="rc-ov"><div class="rn">05 · La Fontana</div><div class="rm">La Stanza di <em>Angela</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div><div class="rc" onclick="sp('ornello')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello" loading="lazy"><div class="rc-ov"><div class="rn">06 · La Fontana</div><div class="rm">La Stanza di <em>Ornello</em></div><div class="rd"></div><div class="rct">Scopri →</div></div></div></div>
 </div>
 
 <div id="page-gabriele" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Gabriele">
-    <div class="ih-ov"><div class="ih-t">
-      <div class="sl">Le Stanze di Sharm</div>
-      <h1>La Stanza di <em>Gabriele</em></h1>
-    </div></div>
-  </div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm</div><h1>La Stanza di <em>Gabriele</em></h1></div></div>
   <div class="rd-wrap"><div class="rd-g">
     <div>
       <div class="sl" style="color:#8B6914;text-shadow:none">La struttura</div>
@@ -539,14 +550,11 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       </div>
     </div>
   </div></div>
+  
   </div>
+</div>
 <div id="page-valentina" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_004.jpeg" alt="Valentina">
-    <div class="ih-ov"><div class="ih-t">
-      <div class="sl">Le Stanze di Sharm</div>
-      <h1>La Stanza di <em>Valentina</em></h1>
-    </div></div>
-  </div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm</div><h1>La Stanza di <em>Valentina</em></h1></div></div>
   <div class="rd-wrap"><div class="rd-g">
     <div>
       <div class="sl" style="color:#8B6914;text-shadow:none">La struttura</div>
@@ -572,14 +580,11 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       </div>
     </div>
   </div></div>
+  
   </div>
+</div>
 <div id="page-giorgia" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg" alt="Giorgia">
-    <div class="ih-ov"><div class="ih-t">
-      <div class="sl">Le Stanze di Sharm</div>
-      <h1>La Stanza di <em>Giorgia</em></h1>
-    </div></div>
-  </div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm</div><h1>La Stanza di <em>Giorgia</em></h1></div></div>
   <div class="rd-wrap"><div class="rd-g">
     <div>
       <div class="sl" style="color:#8B6914;text-shadow:none">La struttura</div>
@@ -605,9 +610,11 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       </div>
     </div>
   </div></div>
+  
   </div>
+</div>
 <div id="page-servizi" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_008.jpeg" alt="Servizi"><div class="ih-ov"><div class="ih-t"><div class="sl">Per il tuo soggiorno</div><h1>I nostri <em>servizi</em></h1></div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Per il tuo soggiorno</div><h1>I nostri <em>servizi</em></h1></div></div>
   <div style="background:var(--w);padding:4rem 5rem 3rem"><p style="font-size:.95rem;font-weight:300;line-height:1.95;color:var(--mid);max-width:620px">Siamo con te dalla prenotazione alla partenza. Ogni servizio è pensato per rendere il tuo soggiorno semplice, comodo e indimenticabile — il tutto in italiano.</p></div>
   <div class="sp" style="min-height:auto;border-top:1px solid rgba(0,0,0,.07)">
     <div class="st" style="background:var(--off)"><div class="sti"><div style="font-size:2.2rem;margin-bottom:1rem">🚗</div><div class="sl" style="color:#8B6914;text-shadow:none">Servizio 01</div><h2 class="sh2">Transfer<br><em>Aeroporto</em></h2><p class="sb">Un autista ti accoglierà all'aeroporto con cartellino personalizzato e ti accompagnerà direttamente alla tua stanza.</p></div></div>
@@ -647,7 +654,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-investi" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_007.jpeg" alt="Investi"><div class="ih-ov"><div class="ih-t"><div class="sl">Opportunità</div><h1>Investi a <em>Sharm el Sheikh</em></h1></div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Opportunità</div><h1>Investi a <em>Sharm el Sheikh</em></h1></div></div>
   <div class="sp">
     <div class="st"><div class="sti">
       <div class="sl" style="color:#8B6914;text-shadow:none">Il mercato</div>
@@ -667,15 +674,15 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-roma" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_025.jpeg" alt="Le Stanze di Roma" style="object-fit:contain;background:#f8f6f2"><div class="ih-ov" style="background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.25) 40%,rgba(0,0,0,.72) 100%)"><div class="ih-t"><div class="sl">Il progetto in Italia</div><h1>Le Stanze di <em>Roma</em></h1></div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Il progetto in Italia</div><h1>Le Stanze di <em>Roma</em></h1></div></div>
   <div class="sp">
     <div class="st"><div class="sti"><div class="sl" style="color:#8B6914;text-shadow:none">Roma</div><h2 class="sh2">Il progetto<br>arriva in <em>Italia</em></h2><p class="sb">Le Stanze è presente anche nella Capitale. Camere e appartamenti in zone strategiche di Roma, con la stessa cura e attenzione delle strutture a Sharm el Sheikh.</p><span class="cl" onclick="sp('contatti')">Contattaci per info</span></div></div>
     <div class="split-img"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_025.jpeg" alt="Roma" style="object-fit:contain;background:#f8f6f2;padding:2rem"><div class="img-ov" style="background:none"></div></div>
   </div>
 </div>
 
-<div id="page-chi-siamo" <div="" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Chi Siamo"><div class="ih-ov"><div class="ih-t"><div class="sl" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Il progetto</div><h1>Chi <em>siamo</em></h1></div></div></div>
+<div id="page-chi-siamo" class="page">
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Il progetto</div><h1>Chi <em>siamo</em></h1></div></div>
   <div class="sp">
     <div class="st"><div class="sti">
       <div class="sl" style="color:#8B6914;text-shadow:none">La nostra storia</div>
@@ -708,7 +715,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-contatti" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_026.jpeg" alt="Contatti"><div class="ih-ov"><div class="ih-t"><div class="sl">Siamo qui per te</div><h1><em>Contatti</em></h1></div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Siamo qui per te</div><h1><em>Contatti</em></h1></div></div>
   <div style="background:var(--w);padding:4.5rem 2rem;display:flex;flex-direction:column;align-items:center;text-align:center">
     <p class="sb" style="max-width:460px;text-align:center;margin-bottom:2.5rem">Per informazioni o prenotazioni contattaci direttamente.<br>Rispondiamo sempre in italiano.</p>
     <div class="cc-g">
@@ -724,10 +731,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-sharm" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_007.jpeg" alt="Sharm El Sheikh"><div class="ih-ov"><div class="ih-t">
-    <div class="sl">Destinazione</div>
-    <h1>Sharm <em>El Sheikh</em></h1>
-  </div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Destinazione</div><h1>Sharm <em>El Sheikh</em></h1></div></div>
 
   <div style="background:var(--w);padding:4rem 5rem 0">
     <div class="sl" style="color:#8B6914;text-shadow:none">La città</div>
@@ -785,10 +789,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-gallery" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_009.jpeg" alt="Photo Gallery"><div class="ih-ov"><div class="ih-t">
-    <div class="sl">Le nostre foto</div>
-    <h1>Photo <em>Gallery</em></h1>
-  </div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le nostre foto</div><h1>Photo <em>Gallery</em></h1></div></div>
   <div style="background:var(--off);padding:3rem 5rem 1rem">
     <p style="font-size:.85rem;font-weight:300;color:var(--mid);font-style:italic">Clicca su una foto per ingrandirla</p>
   </div>
@@ -834,10 +835,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-lavora" class="page">
-  <div class="ih"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_008.jpeg" alt="Lavora con noi"><div class="ih-ov"><div class="ih-t">
-    <div class="sl" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)">Opportunità</div>
-    <h1>Lavora <em>con noi</em></h1>
-  </div></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Entra nel team</div><h1>Lavora <em>con noi</em></h1></div></div>
 
   <div style="background:var(--w);padding:4rem 5rem 3rem">
     <div class="sl" style="color:#8B6914;text-shadow:none">Unisciti al team</div>
@@ -891,6 +889,88 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   </div>
 </div>
 
+
+<div id="page-prossimamente" class="page">
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm · La Fontana</div><h1>La Stanza di <em>Giusy</em></h1></div></div>
+  <div class="rd-wrap"><div class="rd-g">
+    <div>
+      <p class="sb"></p>
+      <p class="sb"></p>
+      <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
+    </div>
+    <div>
+      <div class="am"><h3>Servizi inclusi</h3>
+        <ul class="aml"><li>Wi-Fi</li><li>Aria condizionata</li><li>Cucina attrezzata</li><li>Bagno privato</li><li>Terrazza</li><li>Vista mare</li></ul>
+      </div>
+      <div class="bf"><h3>Verifica disponibilità</h3>
+        <div class="ff"><label>Stanza <span style="color:#c00">*</span></label><select class="room-select" required style="width:100%;padding:.65rem .8rem;border:1px solid #ddd;border-radius:4px;font-size:.82rem;font-family:inherit;background:#fff;color:#333"><option value="" disabled selected>Seleziona la stanza...</option></select></div>
+        <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
+        <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
+        <div class="ff"><label>Arrivo</label><input type="date"></div>
+        <div class="ff"><label>Partenza</label><input type="date"></div>
+        <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
+        <div class="ff"><label>Note e richieste</label><textarea rows="3" placeholder="Scrivi qui eventuali richieste speciali..."></textarea></div>
+        <button class="fsb" onclick="bk()">Richiedi disponibilità</button>
+      </div>
+    </div>
+  </div></div>
+  </div>
+</div>
+<div id="page-angela" class="page">
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm · La Fontana</div><h1>La Stanza di <em>Angela</em></h1></div></div>
+  <div class="rd-wrap"><div class="rd-g">
+    <div>
+      <p class="sb"></p>
+      <p class="sb"></p>
+      <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
+    </div>
+    <div>
+      <div class="am"><h3>Servizi inclusi</h3>
+        <ul class="aml"><li>Wi-Fi</li><li>Aria condizionata</li><li>Cucina attrezzata</li><li>Bagno privato</li><li>Terrazza</li><li>Vista mare</li></ul>
+      </div>
+      <div class="bf"><h3>Verifica disponibilità</h3>
+        <div class="ff"><label>Stanza <span style="color:#c00">*</span></label><select class="room-select" required style="width:100%;padding:.65rem .8rem;border:1px solid #ddd;border-radius:4px;font-size:.82rem;font-family:inherit;background:#fff;color:#333"><option value="" disabled selected>Seleziona la stanza...</option></select></div>
+        <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
+        <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
+        <div class="ff"><label>Arrivo</label><input type="date"></div>
+        <div class="ff"><label>Partenza</label><input type="date"></div>
+        <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
+        <div class="ff"><label>Note e richieste</label><textarea rows="3" placeholder="Scrivi qui eventuali richieste speciali..."></textarea></div>
+        <button class="fsb" onclick="bk()">Richiedi disponibilità</button>
+      </div>
+    </div>
+  </div></div>
+  </div>
+</div>
+<div id="page-ornello" class="page">
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm · La Fontana</div><h1>La Stanza di <em>Ornello</em></h1></div></div>
+  <div class="rd-wrap"><div class="rd-g">
+    <div>
+      <p class="sb"></p>
+      <p class="sb"></p>
+      <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
+    </div>
+    <div>
+      <div class="am"><h3>Servizi inclusi</h3>
+        <ul class="aml"><li>Wi-Fi</li><li>Aria condizionata</li><li>Cucina attrezzata</li><li>Bagno privato</li><li>Terrazza</li><li>Vista mare</li></ul>
+      </div>
+      <div class="bf"><h3>Verifica disponibilità</h3>
+        <div class="ff"><label>Stanza <span style="color:#c00">*</span></label><select class="room-select" required style="width:100%;padding:.65rem .8rem;border:1px solid #ddd;border-radius:4px;font-size:.82rem;font-family:inherit;background:#fff;color:#333"><option value="" disabled selected>Seleziona la stanza...</option></select></div>
+        <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
+        <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
+        <div class="ff"><label>Arrivo</label><input type="date"></div>
+        <div class="ff"><label>Partenza</label><input type="date"></div>
+        <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
+        <div class="ff"><label>Note e richieste</label><textarea rows="3" placeholder="Scrivi qui eventuali richieste speciali..."></textarea></div>
+        <button class="fsb" onclick="bk()">Richiedi disponibilità</button>
+      </div>
+    </div>
+  </div></div>
+  </div>
+</div>
 <footer>
   <div class="fi">
     <div class="fl">Le Stanze di <em>Sharm</em></div>
@@ -1707,88 +1787,7 @@ function bk(){
 <!-- ══════════════════════════════════════════
      BOTTONE ADMIN (nascosto in basso a destra)
      ══════════════════════════════════════════ -->
-<div id="page-prossimamente" class="page">
-  <div class="ih" style="height:auto;min-height:unset;background:#0d0d0d;display:block"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="Giusy" style="position:static;width:100%;height:auto;max-height:90vh;object-fit:contain;object-position:center;display:block;margin:0 auto">
-    <h1 style="display:none">La Stanza di <em>Giusy</em></h1>
-  </div>
-  <div class="rd-wrap"><div class="rd-g">
-    <div>
-      <p class="sb"></p>
-      <p class="sb"></p>
-      <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
-    </div>
-    <div>
-      <div class="am"><h3>Servizi inclusi</h3>
-        <ul class="aml"><li>Wi-Fi</li><li>Aria condizionata</li><li>Cucina attrezzata</li><li>Bagno privato</li><li>Terrazza</li><li>Vista mare</li></ul>
-      </div>
-      <div class="bf"><h3>Verifica disponibilità</h3>
-        <div class="ff"><label>Stanza <span style="color:#c00">*</span></label><select class="room-select" required style="width:100%;padding:.65rem .8rem;border:1px solid #ddd;border-radius:4px;font-size:.82rem;font-family:inherit;background:#fff;color:#333"><option value="" disabled selected>Seleziona la stanza...</option></select></div>
-        <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
-        <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
-        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
-        <div class="ff"><label>Arrivo</label><input type="date"></div>
-        <div class="ff"><label>Partenza</label><input type="date"></div>
-        <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
-        <div class="ff"><label>Note e richieste</label><textarea rows="3" placeholder="Scrivi qui eventuali richieste speciali..."></textarea></div>
-        <button class="fsb" onclick="bk()">Richiedi disponibilità</button>
-      </div>
-    </div>
-  </div></div>
-  </div><div id="page-angela" class="page">
-  <div class="ih" style="height:auto;min-height:unset;background:#0d0d0d;display:block"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="Angela" style="position:static;width:100%;height:auto;max-height:90vh;object-fit:contain;object-position:center;display:block;margin:0 auto">
-    <h1 style="display:none">La Stanza di <em>Angela</em></h1>
-  </div>
-  <div class="rd-wrap"><div class="rd-g">
-    <div>
-      <p class="sb"></p>
-      <p class="sb"></p>
-      <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
-    </div>
-    <div>
-      <div class="am"><h3>Servizi inclusi</h3>
-        <ul class="aml"><li>Wi-Fi</li><li>Aria condizionata</li><li>Cucina attrezzata</li><li>Bagno privato</li><li>Terrazza</li><li>Vista mare</li></ul>
-      </div>
-      <div class="bf"><h3>Verifica disponibilità</h3>
-        <div class="ff"><label>Stanza <span style="color:#c00">*</span></label><select class="room-select" required style="width:100%;padding:.65rem .8rem;border:1px solid #ddd;border-radius:4px;font-size:.82rem;font-family:inherit;background:#fff;color:#333"><option value="" disabled selected>Seleziona la stanza...</option></select></div>
-        <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
-        <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
-        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
-        <div class="ff"><label>Arrivo</label><input type="date"></div>
-        <div class="ff"><label>Partenza</label><input type="date"></div>
-        <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
-        <div class="ff"><label>Note e richieste</label><textarea rows="3" placeholder="Scrivi qui eventuali richieste speciali..."></textarea></div>
-        <button class="fsb" onclick="bk()">Richiedi disponibilità</button>
-      </div>
-    </div>
-  </div></div>
-  </div><div id="page-ornello" class="page">
-  <div class="ih" style="height:auto;min-height:unset;background:#0d0d0d;display:block"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620" alt="Ornello" style="position:static;width:100%;height:auto;max-height:90vh;object-fit:contain;object-position:center;display:block;margin:0 auto">
-    <h1 style="display:none">La Stanza di <em>Ornello</em></h1>
-  </div>
-  <div class="rd-wrap"><div class="rd-g">
-    <div>
-      <p class="sb"></p>
-      <p class="sb"></p>
-      <div class="rp"><h4>Perfetta per</h4><ul><li>Vacanze al mare</li><li>Soggiorni brevi e lunghi</li><li>Smart working</li><li>Coppie e viaggiatori singoli</li></ul></div>
-    </div>
-    <div>
-      <div class="am"><h3>Servizi inclusi</h3>
-        <ul class="aml"><li>Wi-Fi</li><li>Aria condizionata</li><li>Cucina attrezzata</li><li>Bagno privato</li><li>Terrazza</li><li>Vista mare</li></ul>
-      </div>
-      <div class="bf"><h3>Verifica disponibilità</h3>
-        <div class="ff"><label>Stanza <span style="color:#c00">*</span></label><select class="room-select" required style="width:100%;padding:.65rem .8rem;border:1px solid #ddd;border-radius:4px;font-size:.82rem;font-family:inherit;background:#fff;color:#333"><option value="" disabled selected>Seleziona la stanza...</option></select></div>
-        <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
-        <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
-        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
-        <div class="ff"><label>Arrivo</label><input type="date"></div>
-        <div class="ff"><label>Partenza</label><input type="date"></div>
-        <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
-        <div class="ff"><label>Note e richieste</label><textarea rows="3" placeholder="Scrivi qui eventuali richieste speciali..."></textarea></div>
-        <button class="fsb" onclick="bk()">Richiedi disponibilità</button>
-      </div>
-    </div>
-  </div></div>
-  </div><div id="adm-btn" onclick="admCheckPwd()" title="Admin" style="position: fixed; bottom: 18px; right: 18px; z-index: 9998; width: 32px; height: 32px; background: rgba(139, 105, 20, 0.18); border: 1px solid rgba(139, 105, 20, 0.3); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; opacity: 0.4;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.4'">
+<div id="adm-btn" onclick="admCheckPwd()" title="Admin" style="position: fixed; bottom: 18px; right: 18px; z-index: 9998; width: 32px; height: 32px; background: rgba(139, 105, 20, 0.18); border: 1px solid rgba(139, 105, 20, 0.3); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; opacity: 0.4;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.4'">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
 </div>
 
@@ -2346,12 +2345,7 @@ function buildRoomPageHTML(r) {
   const itemsHTML = (r.items||[]).map(item => `<li>${item}</li>`).join('');
 
   return `
-  <div class="ih"><img src="${r.img||''}" alt="${r.name}">
-    <div class="ih-ov"><div class="ih-t">
-      <div class="sl">Le Stanze di Sharm</div>
-      <h1>La Stanza di <em>${r.name}</em></h1>
-    </div></div>
-  </div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm</div><h1>La Stanza di <em>${r.name}</em></h1></div></div>
   <div class="rd-wrap"><div class="rd-g">
     <div>
       <div class="sl" style="color:#8B6914;text-shadow:none">La struttura</div>
@@ -2451,28 +2445,24 @@ function closeCookie(){
 function populateRoomSelects() {
   var NON_ROOM = new Set(['home','stanze','servizi','investi','roma','chi-siamo','contatti','sharm','gallery','lavora']);
   var FONTANA  = new Set(['prossimamente','angela','ornello']);
-  var domina=[], fontana=[];
+  var domina=[];
+  // La Fontana rooms (Giusy, Angela, Ornello) escluse: operative da marzo 2027
   PAGES.forEach(function(slug){
     if(NON_ROOM.has(slug)) return;
+    if(FONTANA.has(slug)) return; // escludi La Fontana
     var page=document.getElementById('page-'+slug);
     if(!page) return;
     var h1=page.querySelector('.ih-t h1')||page.querySelector('h1');
     if(!h1) return;
     var name=h1.textContent.replace('La Stanza di ','').trim();
     if(!name) return;
-    var entry={value:name, label:'La Stanza di '+name};
-    if(FONTANA.has(slug)) fontana.push(entry); else domina.push(entry);
+    domina.push({value:name, label:'La Stanza di '+name});
   });
   function buildOpts(){
     var html='<option value="" disabled selected>Seleziona la stanza...</option>';
     if(domina.length){
       html+='<optgroup label="Domina Coral Bay">';
       domina.forEach(function(r){html+='<option value="'+r.value+'">'+r.label+'</option>';});
-      html+='</optgroup>';
-    }
-    if(fontana.length){
-      html+='<optgroup label="La Fontana">';
-      fontana.forEach(function(r){html+='<option value="'+r.value+'">'+r.label+'</option>';});
       html+='</optgroup>';
     }
     html+='<option value="Prima disponibile">⭐ Prima disponibile</option>';
