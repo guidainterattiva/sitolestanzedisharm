@@ -212,7 +212,7 @@ nav.sc .nc:hover{background:var(--dk);color:var(--w)}
 .gi:hover .gi-z{opacity:1}
 
 /* BOOK FORM */
-.bf{background:var(--dk);padding:2rem}
+.bf{background:var(--dk);padding:2rem;width:100%;box-sizing:border-box}
 .bf h3{font-family:var(--ser);font-size:1.1rem;font-weight:300;color:var(--w);margin-bottom:1.2rem}
 .ff{margin-bottom:.8rem}
 .ff label{display:block;font-size:.52rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.35rem}
@@ -311,6 +311,9 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   .hh1{font-size:clamp(2.8rem,12vw,4.5rem)}
   .stats-g{grid-template-columns:1fr;max-width:280px}
   .cc-g{grid-template-columns:1fr;max-width:320px}
+  #page-prenota .rd-wrap,
+  #page-prenota>div[style*="padding:4rem 5rem"]{padding:2rem 1rem 3rem!important}
+  .ph{padding:2rem 1.5rem!important}
 }
 
 /* POPUP PROMO */
@@ -400,7 +403,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       <span class="nl-t" data-tid="nav-title">Le Stanze di <em>Sharm</em></span>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:.6rem"><button id="lang-btn" onclick="toggleLang()" style="background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font-family:var(--san);font-size:.52rem;font-weight:600;letter-spacing:.18em;padding:.4rem .7rem;cursor:pointer;transition:all .3s">EN</button><div class="nc" onclick="sp('gabriele')" id="nav-prenota">Prenota</div></div>
+  <div style="display:flex;align-items:center;gap:.6rem"><button id="lang-btn" onclick="toggleLang()" style="background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font-family:var(--san);font-size:.52rem;font-weight:600;letter-spacing:.18em;padding:.4rem .7rem;cursor:pointer;transition:all .3s">EN</button><div class="nc" onclick="sp('prenota')" id="nav-prenota">Prenota</div></div>
 </nav>
 
 <!-- MENU -->
@@ -421,7 +424,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   <a onclick="mn('sharm')" data-it="Sharm El Sheikh" data-en="Sharm El Sheikh">Sharm El Sheikh</a>
   <a onclick="mn('gallery')" data-it="Photo Gallery" data-en="Photo Gallery">Photo Gallery</a>
   <a onclick="mn('lavora')" data-it="Lavora con noi" data-en="Work with us">Lavora con noi</a>
-  <div class="mm-cta" data-tid="mm-cta" onclick="mn('gabriele')">🏖 Prenota la tua stanza</div>
+  <div class="mm-cta" data-tid="mm-cta" onclick="mn('prenota')">🏖 Prenota la tua stanza</div>
 </div>
 
 <!-- ════ HOME ════ -->
@@ -434,7 +437,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
       <h1 class="hh1" id="hero-h1">Le Stanze<br><em>di Sharm</em></h1>
       <p class="hsu" id="hero-sub" data-tid="hero-sub" data-it="Camere e appartamenti nel cuore del Mar Rosso" data-en="Rooms and apartments in the heart of the Red Sea">Camere e appartamenti nel cuore del Mar Rosso</p>
       <div class="hbs">
-        <div class="bs" id="hero-btn1" data-it="Prenota ora" data-en="Book now" onclick="sp('gabriele')">Prenota ora</div>
+        <div class="bs" id="hero-btn1" data-it="Prenota ora" data-en="Book now" onclick="sp('prenota')">Prenota ora</div>
         <div class="bg" id="hero-btn2" data-it="Scopri le stanze" data-en="Discover rooms" onclick="sp('stanze')">Scopri le stanze</div>
       </div>
     </div>
@@ -492,7 +495,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
     <div class="ib-ov"><div class="ib-t">
       <div class="sl c">Sharm El Sheikh</div>
       <h2>Il paradiso<br>ti aspetta</h2>
-      <div class="ib-btn" onclick="event.stopPropagation();sp('gabriele')">Richiedi disponibilità</div>
+      <div class="ib-btn" onclick="event.stopPropagation();sp('prenota')">Richiedi disponibilità</div>
     </div></div>
   </div>
 
@@ -725,7 +728,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
     <div style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(0,0,0,.07);width:100%;max-width:680px;display:flex;flex-direction:column;align-items:center">
       <div class="sl c" style="color:#8B6914;text-shadow:none">Prenotazioni</div>
       <p style="font-size:.82rem;color:var(--mid);font-weight:300;max-width:380px;margin:1rem 0 1.5rem;line-height:1.8">Scrivici su WhatsApp per verificare la disponibilità nelle date che preferisci.</p>
-      <div class="bs" onclick="sp('gabriele')" style="cursor:pointer">🏖 Prenota ora</div>
+      <div class="bs" onclick="sp('prenota')" style="cursor:pointer">🏖 Prenota ora</div>
     </div>
   </div>
 </div>
@@ -971,6 +974,27 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   </div></div>
   </div>
 </div>
+
+<div id="page-prenota" class="page">
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le Stanze di Sharm</div><h1>Richiedi <em>disponibilità</em></h1></div></div>
+  <div style="background:var(--w);padding:4rem 5rem 5rem;display:flex;justify-content:center">
+    <div style="width:100%">
+      <p class="sb" style="margin-bottom:2rem">Seleziona la stanza e le date desiderate. Ti risponderemo in italiano entro 24 ore.</p>
+      <div class="bf" style="border-radius:4px">
+        <h3>Verifica disponibilità</h3>
+        <div class="ff"><label>Stanza <span style="color:#c00">*</span></label><select class="room-select" required style="width:100%;padding:.65rem .8rem;border:1px solid #ddd;border-radius:4px;font-size:.82rem;font-family:inherit;background:#fff;color:#333"><option value="" disabled selected>Seleziona la stanza...</option></select></div>
+        <div class="ff"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
+        <div class="ff"><label>Email</label><input type="email" placeholder="email@esempio.it"></div>
+        <div class="ff"><label>Telefono</label><input type="tel" placeholder="+39 333 1234567"></div>
+        <div class="ff"><label>Arrivo</label><input type="date"></div>
+        <div class="ff"><label>Partenza</label><input type="date"></div>
+        <div class="ff"><label>Ospiti</label><input type="number" min="1" max="10" value="2"></div>
+        <div class="ff"><label>Note e richieste</label><textarea rows="3" placeholder="Scrivi qui eventuali richieste speciali..."></textarea></div>
+        <button class="fsb" onclick="bk()">Richiedi disponibilità</button>
+      </div>
+    </div>
+  </div>
+</div>
 <footer>
   <div class="fi">
     <div class="fl">Le Stanze di <em>Sharm</em></div>
@@ -985,7 +1009,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 const IMG={'domina_sign':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_033.jpeg','resort_ext2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_034.jpeg','transfer_sign':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_035.jpeg','golf_cart':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_036.jpeg','garden_sea':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_037.jpeg','mappa':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_038.jpeg','arch_boug_new':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_039.jpeg','int_room1':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_040.jpeg','int_bath1':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_041.jpeg','int_bed1':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_042.jpeg','int_kit':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_043.jpeg','int_bath2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_044.jpeg','int_bed2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_045.jpeg','roma_logo':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_046.jpeg','hero':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_047.jpeg','hero2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_048.jpeg','road':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_049.jpeg','ext':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_050.jpeg','terr_eve':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_051.jpeg','arch_day':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_052.jpeg','arch_sea':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_053.jpeg','sign':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_054.jpeg','garden':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_055.jpeg','exterior2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_056.jpeg','vt1':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_057.jpeg','vt2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_058.jpeg','vt3':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_059.jpeg','vb1':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_060.jpeg','vb2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_061.jpeg','vw':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_062.jpeg','vov':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_063.jpeg','vba1':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_064.jpeg','vba2':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_065.jpeg','vk':'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_066.jpeg'};
 
 // ── PAGES ──
-const PAGES=['home','stanze','gabriele','valentina','giorgia','servizi','investi','roma','chi-siamo','contatti','sharm','gallery','lavora','prossimamente','angela','ornello'];
+const PAGES=['home','stanze','gabriele','valentina','giorgia','servizi','investi','roma','chi-siamo','contatti','sharm','gallery','lavora','prossimamente','angela','ornello','prenota'];
 function sp(id){
   PAGES.forEach(p=>{const e=document.getElementById('page-'+p);if(e)e.classList.remove('on')});
   const t=document.getElementById('page-'+id);
@@ -2443,7 +2467,7 @@ function closeCookie(){
 
 // ── POPULATE ROOM SELECTS DYNAMICALLY ──
 function populateRoomSelects() {
-  var NON_ROOM = new Set(['home','stanze','servizi','investi','roma','chi-siamo','contatti','sharm','gallery','lavora']);
+  var NON_ROOM = new Set(['home','stanze','servizi','investi','roma','chi-siamo','contatti','sharm','gallery','lavora','prenota']);
   var FONTANA  = new Set(['prossimamente','angela','ornello']);
   var domina=[];
   // La Fontana rooms (Giusy, Angela, Ornello) escluse: operative da marzo 2027
