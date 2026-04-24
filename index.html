@@ -320,6 +320,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   .hc{padding:0 2rem 3.5rem}
   .ih-ov{padding:2rem 2.5rem}
   footer{padding:1.8rem 2rem}
+  #newsletter{padding:2.5rem 1.5rem}
   .fi{flex-direction:column;text-align:center}
   nav{grid-template-columns:50px 1fr 50px;padding:0 1rem}
 }
@@ -445,7 +446,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <!-- ════ HOME ════ -->
-<div id="page-home" class="page">
+<div id="page-home" class="page on">
   <section class="hero">
     <div class="hbg" style="background-image:url('https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_026.jpeg?updatedAt=1774875897112')"></div>
     <div class="hov"></div>
@@ -814,7 +815,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   </div>
 </div>
 
-<div id="page-gallery" class="page on">
+<div id="page-gallery" class="page">
   <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Le nostre foto</div><h1>Photo <em>Gallery</em></h1></div></div>
   <div style="background:var(--off);padding:2.5rem 5rem 1rem">
     <p style="font-size:.85rem;font-weight:300;color:var(--mid);font-style:italic">Clicca su una foto per ingrandirla</p>
@@ -1059,6 +1060,57 @@ https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_030.jpeg</textarea>
     </div>
   </div>
 </div>
+<!-- NEWSLETTER -->
+<section id="newsletter" style="background:var(--dk);padding:3.5rem 5rem;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)">
+  <div style="max-width:560px;margin:0 auto;text-align:center">
+    <div class="sl" style="color:var(--gold);text-shadow:none;justify-content:center;margin-bottom:.8rem">Newsletter</div>
+    <h2 style="font-family:var(--ser);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:var(--w);line-height:1.2;margin-bottom:.7rem">Resta <em style="font-style:italic">aggiornato</em></h2>
+    <p style="font-size:.82rem;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:2rem;line-height:1.7">Offerte esclusive, disponibilità anticipate e novità su Le Stanze di Sharm.<br>Niente spam, solo il meglio.</p>
+    <form id="nl-form" action="https://formspree.io/f/xrerojjw" method="POST" style="display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center" onsubmit="nlSubmit(event)">
+      <input type="hidden" name="_subject" value="Nuova iscrizione newsletter – Le Stanze di Sharm">
+      <input
+        type="email" name="email" required
+        placeholder="La tua email"
+        style="flex:1;min-width:220px;padding:.75rem 1.1rem;border:1px solid rgba(255,255,255,.15);border-radius:4px;background:rgba(255,255,255,.06);color:var(--w);font-family:var(--san);font-size:.82rem;outline:none;transition:border-color .2s"
+        onfocus="this.style.borderColor='rgba(176,144,96,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"
+      >
+      <button type="submit" style="padding:.75rem 1.8rem;background:var(--gold);color:#fff;border:none;border-radius:4px;font-family:var(--san);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;white-space:nowrap" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">Iscriviti</button>
+    </form>
+    <p id="nl-msg" style="display:none;margin-top:1.2rem;font-size:.82rem;font-weight:500"></p>
+  </div>
+</section>
+<script>
+function nlSubmit(e){
+  e.preventDefault();
+  var form=document.getElementById('nl-form');
+  var msg=document.getElementById('nl-msg');
+  var btn=form.querySelector('button[type=submit]');
+  var email=form.querySelector('input[type=email]').value;
+  btn.disabled=true; btn.textContent='Invio...';
+  fetch('https://formspree.io/f/xrerojjw',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:email,_subject:'Nuova iscrizione newsletter – Le Stanze di Sharm'})
+  }).then(function(r){
+    if(r.ok){
+      form.style.display='none';
+      msg.style.display='block';
+      msg.style.color='var(--gold)';
+      msg.textContent='✓ Iscrizione confermata! Grazie, ti terremo aggiornato.';
+    } else {
+      msg.style.display='block';
+      msg.style.color='#e06060';
+      msg.textContent='Ops, qualcosa è andato storto. Riprova tra qualche istante.';
+      btn.disabled=false; btn.textContent='Iscriviti';
+    }
+  }).catch(function(){
+    msg.style.display='block';
+    msg.style.color='#e06060';
+    msg.textContent='Errore di connessione. Controlla la rete e riprova.';
+    btn.disabled=false; btn.textContent='Iscriviti';
+  });
+}
+</script>
 <footer>
   <div class="fi">
     <div class="fl">Le Stanze di <em>Sharm</em></div>
@@ -2570,6 +2622,11 @@ window.admExport = function() {
       if(ovExport) ovExport.style.display = 'none';
       const pwdOvExport = domDoc.getElementById('adm-pwd-overlay');
       if(pwdOvExport) pwdOvExport.style.display = 'none';
+
+      // Forza sempre page-home come pagina attiva nel file esportato
+      domDoc.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+      const homeExport = domDoc.getElementById('page-home');
+      if(homeExport) homeExport.classList.add('on');
 
       const html = '<!DOCTYPE html>\n' + domDoc.documentElement.outerHTML;
       const blob = new Blob([html], {type: 'text/html;charset=utf-8'});
