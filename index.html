@@ -248,6 +248,19 @@ html[dir=rtl] .sp.rv>*{direction:rtl}
 .sv-c a{font-size:.7rem;font-weight:600;color:var(--gold);display:block;margin-bottom:.2rem;transition:color .2s;cursor:pointer}
 .sv-c a:hover{color:var(--gold2)}
 
+/* BRAND CARDS (MDS Vacanze) */
+.mds-cards{display:flex;flex-direction:column;gap:1.5rem;padding:0 5rem 4rem}
+.mds-card{position:relative;display:block;overflow:hidden;border-radius:6px;min-height:340px;text-decoration:none}
+.mds-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.mds-card:hover img{transform:scale(1.04)}
+.mds-card-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.97) 0%,rgba(0,0,0,.94) 32%,rgba(0,0,0,.8) 52%,rgba(0,0,0,.5) 72%,rgba(0,0,0,.28) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 2.2rem}
+.mds-card-eyebrow{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:.6rem;text-shadow:0 1px 6px rgba(0,0,0,.9)}
+.mds-card-title{font-family:var(--ser);font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:.6rem;text-shadow:0 2px 14px rgba(0,0,0,.95)}
+.mds-card-title em{font-style:italic}
+.mds-card-desc{font-size:.82rem;line-height:1.75;color:#fff;max-width:440px;margin-bottom:1rem;text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.mds-card-cta{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);text-shadow:0 1px 6px rgba(0,0,0,.9)}
+@media(min-width:901px){.mds-cards{flex-direction:row}.mds-card{flex:1;min-height:420px}}
+
 /* GALLERY */
 .gg{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
 .gi{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3}
@@ -342,6 +355,8 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   .rh,.rg{padding-left:2rem;padding-right:2rem}
   .rg{grid-template-columns:1fr}
   .svc-g{grid-template-columns:1fr;gap:3px}
+  .mds-cards{padding-left:1.2rem;padding-right:1.2rem}
+  .mds-card{min-height:320px}
   .gg{grid-template-columns:repeat(2,1fr)}
   .rd-wrap{padding:3rem 2rem}
   .rd-g{grid-template-columns:1fr;gap:2rem}
@@ -483,7 +498,7 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
   <a onclick="mn('stanze')" data-it="Le Stanze di Sharm" data-en="Our Rooms" data-tid="mm-stanze">Le Stanze di Sharm</a>
   <a onclick="mn('servizi')" data-it="Servizi" data-en="Services" data-tid="mm-servizi">Servizi</a>
   <a onclick="mn('investi')" data-it="Investi a Sharm" data-en="Invest in Sharm" data-tid="mm-investi">Investi a Sharm</a>
-  <a onclick="mn('roma')" data-it="Le Stanze di Roma" data-en="Le Stanze di Roma">Le Stanze di Roma</a>
+  <a onclick="mn('roma')" data-it="MDS Vacanze" data-en="MDS Vacanze">MDS Vacanze</a>
   <a onclick="mn('chi-siamo')" data-it="Chi Siamo" data-en="About Us" data-tid="mm-chiamo">Chi Siamo</a>
   <a onclick="mn('contatti')" data-it="Contatti" data-en="Contact" data-tid="mm-contatti">Contatti</a>
   <a onclick="mn('sharm')" data-it="Sharm El Sheikh" data-en="Sharm El Sheikh">Sharm El Sheikh</a>
@@ -795,10 +810,37 @@ footer p{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
 </div>
 
 <div id="page-roma" class="page">
-  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Il progetto in Italia</div><h1>Le Stanze di <em>Roma</em></h1></div></div>
-  <div class="sp">
-    <div class="st"><div class="sti"><div class="sl" style="color:#8B6914;text-shadow:none">Roma</div><h2 class="sh2">Il progetto<br>arriva in <em>Italia</em></h2><p class="sb">Le Stanze è presente anche nella Capitale. Camere e appartamenti in zone strategiche di Roma, con la stessa cura e attenzione delle strutture a Sharm el Sheikh.</p><span class="cl" onclick="sp('contatti')">Contattaci per info</span></div></div>
-    <div class="split-img"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_025.jpeg" alt="Roma" style="object-fit:contain;background:#f8f6f2;padding:2rem"><div class="img-ov" style="background:none"></div></div>
+  <div class="ph"><img class="ph-logo" src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="ph-txt"><div class="sl">Il gruppo in Italia</div><h1>MDS <em>Vacanze</em></h1></div></div>
+  <div class="st" style="justify-content:flex-start">
+    <div class="sti" style="max-width:560px">
+      <div class="sl" style="color:#8B6914;text-shadow:none">La collezione</div>
+      <h2 class="sh2">Ospitalità a Roma<br>e nel <em>Cicolano</em></h2>
+      <p class="sb">MDS Vacanze riunisce i progetti di ospitalità di Massimiliano De Santis in Italia: camere nel cuore di Roma e un appartamento indipendente nel verde del Cicolano, con la stessa cura delle strutture a Sharm el Sheikh.</p>
+      <span class="cl" onclick="sp('contatti')">Contattaci per info</span>
+    </div>
+  </div>
+  <div style="background:var(--off);padding:2.5rem 5rem 1rem">
+    <div class="sl" style="color:#8B6914;text-shadow:none;margin-bottom:0">Le strutture</div>
+  </div>
+  <div class="mds-cards" style="background:var(--off);padding-top:2rem">
+    <a class="mds-card" href="https://www.mdsapartments.com/" target="_blank" rel="noopener">
+      <img src="https://ik.imagekit.io/2gkrpnbbol/IMG-20260924-WA0042.jpg?updatedAt=1790409672118" alt="MDS Apartments Roma" loading="lazy">
+      <div class="mds-card-ov">
+        <div class="mds-card-eyebrow">Italia · Roma</div>
+        <div class="mds-card-title">MDS <em>Apartments</em> Roma</div>
+        <div class="mds-card-desc">Appartamenti accoglienti nel cuore di Roma, a pochi passi dal Vaticano. Ideali per turisti, coppie e viaggiatori di lavoro.</div>
+        <div class="mds-card-cta">Visita il sito →</div>
+      </div>
+    </a>
+    <a class="mds-card" href="https://www.lestanzedipescorocchiano.it/" target="_blank" rel="noopener">
+      <img src="https://ik.imagekit.io/2gkrpnbbol/IMG-20260807-WA0013.jpg" alt="Le Stanze di Pescorocchiano" loading="lazy">
+      <div class="mds-card-ov">
+        <div class="mds-card-eyebrow">Italia · Rieti · Cicolano</div>
+        <div class="mds-card-title">Le Stanze di <em>Pescorocchiano</em></div>
+        <div class="mds-card-desc">Un appartamento intero di 70 m² in un borgo di pietra nel cuore del Cicolano, tra il Lago del Salto e le montagne della Duchessa.</div>
+        <div class="mds-card-cta">Visita il sito →</div>
+      </div>
+    </a>
   </div>
 </div>
 
@@ -1753,7 +1795,7 @@ function mapZoom(wrap){
 // ══════════════════════════════════════
 // LANGUAGE SWITCHER — Sistema completo
 // ══════════════════════════════════════
-// Sistema lingue — stesso schema di Le Stanze di Roma
+// Sistema lingue — stesso schema degli altri siti del gruppo MDS
 //  · IT  = testi originali del sito
 //  · EN  = dizionario curato (applyTranslations) + traduzione automatica per ciò che non copre
 //  · FR / DE / ES / RU / PT / PL / AR = traduzione automatica con cache nel browser
@@ -1813,7 +1855,7 @@ function seedTranslation(lang, text, out){
 
 // Nomi del progetto che la traduzione automatica non deve toccare.
 // Vengono sostituiti da un segnaposto prima della traduzione e rimessi dopo.
-const PROTECTED_TERMS = ["Le Stanze di Sharm","Le Stanze di Roma","Le Stanze","Coral Bay","La Fontana","OliTravel"];
+const PROTECTED_TERMS = ["Le Stanze di Sharm","MDS Vacanze","MDS Apartments Roma","MDS Apartments","Le Stanze di Pescorocchiano","Le Stanze","Coral Bay","La Fontana","OliTravel"];
 const PROTECTED_RE = new RegExp(
   PROTECTED_TERMS.slice().sort((a,b) => b.length - a.length)
     .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), "g");
@@ -2165,7 +2207,7 @@ function applyTranslations(forceLang) {
     if(txt==='Sharm El Sheikh') a.textContent = 'Sharm El Sheikh';
     if(txt==='Photo Gallery') a.textContent = 'Photo Gallery';
     if(txt==='Lavora con noi'||txt==='Work with us') a.textContent = t('Lavora con noi','Work with us');
-    if(txt==='Le Stanze di Roma') a.textContent = 'Le Stanze di Roma';
+    if(txt==='MDS Vacanze') a.textContent = 'MDS Vacanze';
   });
 
   // ── HOME HERO ──
@@ -2375,22 +2417,33 @@ function applyTranslations(forceLang) {
     }
   }
 
-  // ── PAGINA ROMA ──
+  // ── PAGINA MDS VACANZE (ex Roma) ──
   const pageRoma = document.getElementById('page-roma');
   if(pageRoma) {
-    const ih = pageRoma.querySelector('.ih-t');
-    if(ih) {
-      const sl = ih.querySelector('.sl'); if(sl) sl.textContent = t('Il progetto in Italia','The project in Italy');
-      const h1 = ih.querySelector('h1'); if(h1) h1.innerHTML = t('Le Stanze di <em>Roma</em>','Le Stanze di <em>Roma</em>');
+    const ph = pageRoma.querySelector('.ph-txt');
+    if(ph) {
+      const sl = ph.querySelector('.sl'); if(sl) sl.textContent = t('Il gruppo in Italia','The group in Italy');
+      const h1 = ph.querySelector('h1'); if(h1) h1.innerHTML = t('MDS <em>Vacanze</em>','MDS <em>Vacanze</em>');
     }
-    const sti = pageRoma.querySelector('.sti');
-    if(sti) {
-      const sl = sti.querySelector('.sl'); if(sl) sl.textContent = t('Roma','Rome');
-      const h2 = sti.querySelector('.sh2'); if(h2) h2.innerHTML = t('Il progetto<br>arriva in <em>Italia</em>','The project<br>comes to <em>Italy</em>');
-      const ps = sti.querySelectorAll('.sb');
-      if(ps[0]) ps[0].innerHTML = t('Le Stanze è presente anche nella Capitale. Camere e appartamenti in zone strategiche di Roma, con la stessa cura e attenzione delle strutture a Sharm el Sheikh.','Le Stanze is also present in the Italian capital. Rooms and apartments in strategic areas of Rome, with the same care and attention as the Sharm el Sheikh properties.');
-      const cta = sti.querySelector('.cl'); if(cta) cta.textContent = t('Contattaci per info','Contact us for info');
-    }
+    const romaSls = pageRoma.querySelectorAll('.sl');
+    if(romaSls[1]) romaSls[1].textContent = t('La collezione','The collection');
+    if(romaSls[2]) romaSls[2].textContent = t('Le strutture','The properties');
+    const romaH2s = pageRoma.querySelectorAll('.sh2');
+    if(romaH2s[0]) romaH2s[0].innerHTML = t('Ospitalità a Roma<br>e nel <em>Cicolano</em>','Hospitality in Rome<br>and the <em>Cicolano</em>');
+    const introP = pageRoma.querySelector('.sb'); if(introP) introP.innerHTML = t('MDS Vacanze riunisce i progetti di ospitalità di Massimiliano De Santis in Italia: camere nel cuore di Roma e un appartamento indipendente nel verde del Cicolano, con la stessa cura delle strutture a Sharm el Sheikh.','MDS Vacanze brings together Massimiliano De Santis&#39; hospitality projects in Italy: rooms in the heart of Rome and a standalone apartment in the green Cicolano area, with the same care as the Sharm el Sheikh properties.');
+    const mdsCards = pageRoma.querySelectorAll('.mds-card');
+    const mdsCardData = [
+      [t('Italia · Roma','Italy · Rome'), t('MDS <em>Apartments</em> Roma','MDS <em>Apartments</em> Rome'), t('Appartamenti accoglienti nel cuore di Roma, a pochi passi dal Vaticano. Ideali per turisti, coppie e viaggiatori di lavoro.','Welcoming apartments in the heart of Rome, a few steps from the Vatican. Ideal for tourists, couples and business travellers.')],
+      [t('Italia · Rieti · Cicolano','Italy · Rieti · Cicolano'), t('Le Stanze di <em>Pescorocchiano</em>','Le Stanze di <em>Pescorocchiano</em>'), t('Un appartamento intero di 70 m² in un borgo di pietra nel cuore del Cicolano, tra il Lago del Salto e le montagne della Duchessa.','A whole 70 sqm apartment in a stone village in the heart of the Cicolano, between Lake Salto and the Duchessa mountains.')],
+    ];
+    mdsCards.forEach((card,i) => {
+      if(!mdsCardData[i]) return;
+      const eyebrow = card.querySelector('.mds-card-eyebrow'); if(eyebrow) eyebrow.textContent = mdsCardData[i][0];
+      const title = card.querySelector('.mds-card-title'); if(title) title.innerHTML = mdsCardData[i][1];
+      const desc = card.querySelector('.mds-card-desc'); if(desc) desc.innerHTML = mdsCardData[i][2];
+      const cta = card.querySelector('.mds-card-cta'); if(cta) cta.textContent = t('Visita il sito →','Visit the site →');
+    });
+    const introCta = pageRoma.querySelector('.cl'); if(introCta) introCta.textContent = t('Contattaci per info','Contact us for info');
   }
 
   // ── PAGINA CHI SIAMO ──
@@ -3092,7 +3145,7 @@ window.admSaveRoom = async function() {
   if(!slug) { errEl.textContent = '❌ Lo slug è obbligatorio'; errEl.style.display = 'block'; return; }
   if(!name) { errEl.textContent = '❌ Il nome è obbligatorio'; errEl.style.display = 'block'; return; }
 
-  // Traduzione automatica in tutte le lingue (come Le Stanze di Roma).
+  // Traduzione automatica in tutte le lingue (come gli altri siti del gruppo MDS).
   // Le traduzioni restano nella cache del browser e l'export le incorpora nel file:
   // i visitatori le trovano già pronte.
   const txStatus = document.getElementById('adm-translate-status');
