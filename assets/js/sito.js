@@ -44,6 +44,55 @@
     window.addEventListener("resize", function () { if (window.innerWidth > 1180) closeDrawer(); });
   }
 
+  /* ---------- lingue: IT ed EN sono pagine vere; le lingue di S.gt (FR, DE, ES, RU, PT, PL, AR) le traduce
+     Google Translate, caricato solo quando il visitatore ne sceglie una. La scelta resta nel cookie di sessione
+     googtrans (quello che legge Google) e vale per le pagine italiane; sulle pagine inglesi viene cancellato. */
+  var GT = S.gt || [];
+  function gtLingua() { var m = d.cookie.match(/(?:^|;\s*)googtrans=\/[^\/;]*\/([a-zA-Z-]+)/); return m && GT.indexOf(m[1]) >= 0 ? m[1] : ""; }
+  function gtCookie(l) {
+    var h = location.hostname.split("."), via = "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    d.cookie = "googtrans" + via;
+    for (var i = 0; i < h.length - 1; i++) d.cookie = "googtrans" + via + "; domain=." + h.slice(i).join(".");
+    if (l) d.cookie = "googtrans=/it/" + l + "; path=/; samesite=lax";
+  }
+  function gtCarica() {
+    if (window.gtInit) return;
+    var el = d.createElement("div"); el.id = "gt-el"; el.className = "gt-el"; el.setAttribute("aria-hidden", "true"); d.body.appendChild(el);
+    window.gtInit = function () { new window.google.translate.TranslateElement({ pageLanguage: "it", includedLanguages: GT.join(","), autoDisplay: false }, "gt-el"); };
+    var s = d.createElement("script"); s.src = "https://translate.google.com/translate_a/element.js?cb=gtInit"; s.async = true; d.body.appendChild(s);
+  }
+  function segnaLingua(l) {
+    $$(".lsel__btn").forEach(function (b) { var f = $(".fl", b), c = $(".lsel__cod", b); if (f) f.className = "fl fl-" + l; if (c) c.textContent = l.toUpperCase(); });
+    $$(".lsel__m a, .lsel-grid a").forEach(function (a) {
+      if ((a.getAttribute("data-gt") || a.getAttribute("data-lingua")) === l) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+  }
+  var lsel = $("[data-lsel]"), lbtn = lsel && $(".lsel__btn", lsel), lmenu = lsel && $(".lsel__m", lsel);
+  function chiudiLingue() { if (lmenu) { lmenu.hidden = true; lbtn.setAttribute("aria-expanded", "false"); } }
+  if (lbtn && lmenu) {
+    lbtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (!lmenu.hidden) { chiudiLingue(); return; }
+      lmenu.hidden = false; lbtn.setAttribute("aria-expanded", "true");
+      var c = $("a[aria-current]", lmenu) || $("a", lmenu); c && c.focus();
+    });
+    d.addEventListener("click", function (e) { if (!lsel.contains(e.target)) chiudiLingue(); });
+    d.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lmenu.hidden) { chiudiLingue(); lbtn.focus(); } });
+  }
+  $$("[data-gt]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var l = a.getAttribute("data-gt");
+      e.preventDefault(); gtCookie(l); chiudiLingue(); closeDrawer();
+      if (LANG !== "it") { location.href = a.href; return; }
+      var sel = $("select.goog-te-combo");
+      if (sel) { sel.value = l; sel.dispatchEvent(new Event("change")); } else gtCarica();
+      segnaLingua(l);
+    });
+  });
+  $$("[data-lingua]").forEach(function (a) { a.addEventListener("click", function () { if (d.cookie.indexOf("googtrans=") >= 0) gtCookie(""); }); });
+  if (LANG === "it" && gtLingua()) { gtCarica(); segnaLingua(gtLingua()); }
+  else if (d.cookie.indexOf("googtrans=") >= 0) gtCookie("");
+
   /* ---------- consenso: Google Maps solo dopo "Accetta" o dopo un clic sulla mappa */
   var ban = $("#consenso");
   function consenso() { return store.get("consenso"); }
@@ -58,7 +107,7 @@
   $$("[data-preferenze]").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); mostraBanner(true); var x = $("[data-consenso]", ban); x && x.focus(); }); });
 
   /* ---------- mappe Google (iframe senza chiave, caricato su consenso o clic) */
-  function srcMappa(q) { return "https://www.google.com/maps?q=" + encodeURIComponent(q) + "&z=16&hl=" + LANG + "&output=embed"; }
+  function srcMappa(q) { return "https://www.google.com/maps?q=" + encodeURIComponent(q) + "&z=16&hl=" + (gtLingua() || LANG) + "&output=embed"; }
   function caricaMappa(box, forza) {
     var pts = JSON.parse(box.getAttribute("data-punti")), i = +(box.getAttribute("data-i") || 0);
     var frame = $("iframe", box);
@@ -328,7 +377,9 @@
 
   /* ---------- prenotazione */
   function octoUrl(oc, v) {
-    var c = oc.split("|"), base = "https://book.octorate.com/octobook/site/reservation/", lang = LANG.toUpperCase();
+    // Octorate parla IT, EN, FR, DE, ES (verificato il 03/10/2026): per le altre lingue tradotte da Google, inglese
+    var g = gtLingua(), lang = (g ? (["fr", "de", "es"].indexOf(g) >= 0 ? g : "en") : LANG).toUpperCase();
+    var c = oc.split("|"), base = "https://book.octorate.com/octobook/site/reservation/";
     if (v.arrivo && v.partenza) return base + "result.xhtml?checkin=" + v.arrivo + "&checkout=" + v.partenza + "&pax=" + (v.ospiti || 2) + "&codice=" + c[0] + "&room=" + c[1] + "&lang=" + lang;
     return base + "calendar.xhtml?codice=" + c[0] + "&room=" + c[1] + "&lang=" + lang;
   }
