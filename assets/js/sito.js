@@ -1,5 +1,7 @@
-/* Comportamenti del sito: menu, galleria, calendari di disponibilita', prenotazione, consenso, mappe.
-   Nessuna libreria esterna. La disponibilita' arriva da dati/disponibilita.js (aggiornato dal server). */
+/* Comportamenti del sito: menu, galleria, calendari, richiesta di prenotazione su WhatsApp, consenso, mappe.
+   Nessuna libreria esterna. Dal 14/10/2026 ogni prenotazione parte su WhatsApp (il motore esterno del cliente
+   e' scaduto): i calendari servono a scegliere le date. La disponibilita' (dati/disponibilita.js) si carica
+   solo se la pagina la dichiara (SITO.dispo), oggi spenta su entrambi i siti. */
 (function () {
   "use strict";
   var S = window.SITO || {}, M = S.msg || {}, d = document, root = S.root || "", LANG = S.lang || "it";
@@ -375,14 +377,7 @@
     f._set = function (a, p) { aggiornaCampi(f, a, p); if (cal) cal.set(a, p); };
   }
 
-  /* ---------- prenotazione */
-  function octoUrl(oc, v) {
-    // Octorate parla IT, EN, FR, DE, ES (verificato il 03/10/2026): per le altre lingue tradotte da Google, inglese
-    var g = gtLingua(), lang = (g ? (["fr", "de", "es"].indexOf(g) >= 0 ? g : "en") : LANG).toUpperCase();
-    var c = oc.split("|"), base = "https://book.octorate.com/octobook/site/reservation/";
-    if (v.arrivo && v.partenza) return base + "result.xhtml?checkin=" + v.arrivo + "&checkout=" + v.partenza + "&pax=" + (v.ospiti || 2) + "&codice=" + c[0] + "&room=" + c[1] + "&lang=" + lang;
-    return base + "calendar.xhtml?codice=" + c[0] + "&room=" + c[1] + "&lang=" + lang;
-  }
+  /* ---------- prenotazione: la richiesta parte su WhatsApp, gia' scritta con alloggio, date (gg/mm/aaaa) e ospiti */
   function values(f) {
     var g = function (n) { var el = $("[name=" + n + "]", f); return el ? el.value : ""; };
     return { arrivo: g("arrivo"), partenza: g("partenza"), ospiti: g("ospiti"), casa: g("casa") };
@@ -400,17 +395,13 @@
     var casaSel = $("select[name=casa]", f);
     f.addEventListener("submit", function (e) {
       e.preventDefault();
-      var v = values(f), mode = f.getAttribute("data-book"), casa = casaDi(f);
+      var v = values(f), casa = casaDi(f), nome = f.getAttribute("data-nome") || "";
       if (!v.arrivo || !v.partenza) { errore(f, M.err_date); var b = $("[data-apri=arrivo]", f); b && b.click(); return; }
       if (casa && casa !== "*" && haDati(casa) && !periodoLibero(casa, v.arrivo, v.partenza)) { errore(f, M.cal_occ); return; }
-      if (mode === "cerca") {
-        if (!v.casa) { location.href = f.getAttribute("action") + "?arrivo=" + v.arrivo + "&partenza=" + v.partenza + "&ospiti=" + v.ospiti + "#elenco"; return; }
-        var opt = casaSel.options[casaSel.selectedIndex];
-        if (!opt.getAttribute("data-oc")) { window.open(waUrl(fmt(M.wa_pren, { casa: opt.getAttribute("data-nome") || opt.textContent, arrivo: itDate(v.arrivo), partenza: itDate(v.partenza), ospiti: v.ospiti || 2 })), "_blank", "noopener"); return; }
-        window.open(octoUrl(opt.getAttribute("data-oc"), v), "_blank", "noopener"); return;
-      }
-      if (mode === "wa") { window.open(waUrl(fmt(M.wa_pren, { casa: f.getAttribute("data-nome"), arrivo: itDate(v.arrivo), partenza: itDate(v.partenza), ospiti: v.ospiti || 2 })), "_blank", "noopener"); return; }
-      window.open(octoUrl(f.getAttribute("data-oc"), v), "_blank", "noopener");
+      if (casaSel) { var opt = casaSel.options[casaSel.selectedIndex]; nome = opt && opt.value ? opt.getAttribute("data-nome") || opt.textContent : ""; }
+      // barra di ricerca su «tutte»: la domanda e' quale alloggio e' libero
+      var dati = { casa: nome, arrivo: itDate(v.arrivo), partenza: itDate(v.partenza), ospiti: v.ospiti || 2 };
+      window.open(waUrl(fmt(nome ? M.wa_pren : M.wa_date, dati)), "_blank", "noopener");
     });
     $$("[data-wa]", f).forEach(function (b) {
       b.addEventListener("click", function (e) {
@@ -437,14 +428,11 @@
     var el = $("#elenco"); if (!el) return;
     var qa = q.get("arrivo") || store.get("arrivo"), qp = q.get("partenza") || store.get("partenza"), qo = +(q.get("ospiti") || store.get("ospiti") || 0);
     $$("[data-casa]", el).forEach(function (c) {
-      var id = c.getAttribute("data-casa"), max = +c.getAttribute("data-max") || 99, oc = c.getAttribute("data-oc"), ok = true, badge = $(".js-disp", c), testo = "";
+      var id = c.getAttribute("data-casa"), max = +c.getAttribute("data-max") || 99, ok = true, badge = $(".js-disp", c), testo = "";
       if (qo && qo > max) { ok = false; testo = fmt(M.troppi, { n: max }); }
-      if (qa && qp && qp > qa) {
-        if (haDati(id)) {
-          if (periodoLibero(id, qa, qp)) { var t = totale(id, qa, qp); if (ok) testo = M.disp_si + (t ? " · " + euro(t) : ""); }
-          else { ok = false; testo = M.disp_no; }
-        }
-        var bt = $(".js-octo", c); if (bt && oc) bt.href = octoUrl(oc, { arrivo: qa, partenza: qp, ospiti: qo || 2 });
+      if (qa && qp && qp > qa && haDati(id)) {
+        if (periodoLibero(id, qa, qp)) { var t = totale(id, qa, qp); if (ok) testo = M.disp_si + (t ? " · " + euro(t) : ""); }
+        else { ok = false; testo = M.disp_no; }
       }
       c.classList.toggle("is-no", !ok && !!(qo || (qa && qp)));
       c.classList.toggle("is-ok", ok && !!testo);
@@ -452,7 +440,8 @@
     });
   }
 
-  /* dati di disponibilita': file JS pubblicato dal server (il server nega i .json) */
+  /* dati di disponibilita': file JS pubblicato dal server (il server nega i .json). Senza SITO.dispo
+     i calendari restano semplici scelte di date, senza notti occupate ne' prezzi. */
   function caricaDispo() {
     var s = d.createElement("script");
     s.src = root + "dati/disponibilita.js?t=" + Math.floor(Date.now() / 6e5);
@@ -460,7 +449,7 @@
     s.onerror = function () { segnaElenco(); };
     d.body.appendChild(s);
   }
-  caricaDispo();
+  if (S.dispo) caricaDispo(); else segnaElenco();
 
   /* ---------- modulo contatti -> WhatsApp o email */
   var cf = $("#contatto");
