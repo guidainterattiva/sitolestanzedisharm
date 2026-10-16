@@ -803,8 +803,11 @@ body.no-scroll{overflow:hidden}
 .btn--wa{--bg:#157A3C;--fg:#fff}.btn--wa:hover{--bg:#0F6331;color:#fff}
 @media (max-width:760px){.gal .gal__all{position:static;grid-column:1 / -1;width:100%;min-height:46px}}
 
+/* telefono (16/10/2026): «Le Stanze» / «di Sharm» su due righe accanto all'emblema, vedi comune.css */
+@media (max-width:560px){.hdr .brand__nome{font-size:21px;line-height:1.04}}
+
 /* Parti comuni ai siti MDS (Roma e Sharm), aggiunte il 03/10/2026: file identico nei due progetti,
-   accodato a tema.css da build.py. Menu lingue con bandiere, pulizia di Google Translate,
+   accodato a tema.css da build.py. Menu lingue con bandiere (anche su telefono dal 16/10/2026), pulizia di Google Translate,
    sezione e riga del footer «Le nostre altre strutture». Usa solo i token di tema.css. */
 
 /* ---------- menu lingue */
@@ -823,11 +826,39 @@ body.no-scroll{overflow:hidden}
 .hdr--over .lsel__btn:hover,.hdr--over .lsel__btn[aria-expanded="true"]{color:#fff;border-color:#fff}
 .hdr--over.is-scrolled .lsel__btn,.hdr--over.is-open .lsel__btn{color:var(--ink-soft);border-color:var(--line)}
 .hdr--over.is-scrolled .lsel__btn:hover,.hdr--over.is-scrolled .lsel__btn[aria-expanded="true"]{color:var(--dark);border-color:var(--dark)}
-@media (max-width:560px){.hdr .lsel{display:none}}
+/* telefono (16/10/2026, richiesta del cliente: «a tendina con le bandierine, sia da pc che da mobile»): la tendina resta
+   nell'header. Per farci stare logo, lingue e menu il nome va su due righe (la parte in <em>) e il sottotitolo si nasconde;
+   sotto i 390 px il pulsante mostra solo la bandiera. Prima, a 360 px, il pulsante del menu di Sharm usciva dallo schermo. */
+@media (max-width:560px){
+ .hdr__in{gap:10px}
+ .hdr .brand{flex-shrink:1;min-width:0;gap:10px}
+ .hdr .brand__txt{min-width:0;overflow:hidden}
+ .hdr .brand__nome{white-space:nowrap}
+ .hdr .brand__nome em{display:block}
+ .hdr .brand__sub{display:none}
+ .hdr__act{gap:8px;flex-shrink:0}
+ .hdr .lsel{display:block}
+ .lsel__btn{height:44px;padding:0 11px;gap:7px}
+ .lsel__m{min-width:212px;max-height:calc(100vh - var(--hdr) - 28px);max-height:calc(100svh - var(--hdr) - 28px);overflow-y:auto;overscroll-behavior:contain}
+ .lsel__m a{padding:11px 14px;gap:14px}
+ .burger{width:44px;height:44px}
+}
+@media (max-width:389px){.lsel__cod{display:none}.lsel__btn{padding:0 10px}}
+@media (max-width:345px){.hdr .brand__em img{height:26px}.hdr__in{gap:8px}}
 /* nel menu mobile: tutte le lingue in griglia */
 .drawer__foot .lsel-grid{flex:1 1 100%;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:6px}
 .drawer .lsel-grid a{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);background:#fff;color:var(--ink);font:500 15px/1.2 var(--sans)}
 .drawer .lsel-grid a[aria-current]{border-color:var(--dark);font-weight:600}
+
+/* ---------- schede: su telefono il pulsante «Mostra tutte le foto» ereditava l'aspect-ratio 1:1 delle miniature
+   (.gal button:not(:first-child)) e diventava un riquadro vuoto alto quanto lo schermo (16/10/2026) */
+@media (max-width:760px){.gal button.gal__all{aspect-ratio:auto;min-height:50px}}
+
+/* ---------- schermi stretti (16/10/2026): a 320 px colonne della scheda, recensioni e box contatti finali uscivano
+   di lato (i figli delle griglie si allargano al contenuto piu' lungo: email, tabella delle distanze) */
+.unit > *,.cta > *,.recs > *,.contatti > *,.dove > *,.split > *,.welcome > *,.dest > *{min-width:0}
+.cta__c a > span{min-width:0;overflow-wrap:anywhere}
+@media (max-width:400px){.dist td{white-space:normal}}
 
 /* ---------- Google Translate: nessuna barra, nessun riquadro al passaggio del mouse */
 .gt-el{position:absolute!important;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
