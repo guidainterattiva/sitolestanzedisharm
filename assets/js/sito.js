@@ -1,7 +1,8 @@
-/* Comportamenti del sito: menu, galleria, calendari, richiesta di prenotazione su WhatsApp, consenso, mappe.
-   Nessuna libreria esterna. Dal 14/10/2026 ogni prenotazione parte su WhatsApp (il motore esterno del cliente
-   e' scaduto): i calendari servono a scegliere le date. La disponibilita' (dati/disponibilita.js) si carica
-   solo se la pagina la dichiara (SITO.dispo), oggi spenta su entrambi i siti. */
+/* Comportamenti del sito: menu, galleria, calendari, prenotazione online o su WhatsApp, consenso, mappe.
+   Nessuna libreria esterna. Dal 26/10/2026 c'e' il motore Krossbooking del cliente (SITO.kross): il calendario
+   legge dal vivo le notti libere di ogni alloggio presente nel motore e «Prenota online» apre il motore con
+   alloggio, date e ospiti. Gli alloggi che non ci sono, e la ricerca su «tutti» dove il motore non li ha tutti,
+   restano su WhatsApp con il messaggio gia' scritto. dati/disponibilita.js (SITO.dispo) non si usa piu'. */
 (function () {
   "use strict";
   var S = window.SITO || {}, M = S.msg || {}, d = document, root = S.root || "", LANG = S.lang || "it";
@@ -313,7 +314,7 @@
       stato = '<p class="cal__msg"><b>' + nice(this.a) + " → " + nice(this.p) + "</b> · " + n + " " + (n === 1 ? M.notte : M.notti) + (t ? " · " + M.cal_tot + " <b>" + euro(t) + "</b>" : "") + "</p>";
     } else if (this.a) stato = '<p class="cal__msg">' + M.cal_scegli_p + (conDati && minimo(casa, this.a) > 1 ? " · " + fmt(M.cal_min_breve, { n: minimo(casa, this.a) }) : "") + "</p>";
     else stato = '<p class="cal__msg">' + M.cal_scegli_a + "</p>";
-    var leg = conDati ? '<div class="cal__leg"><span><i class="lg-free"></i>' + M.cal_libero + '</span><span><i class="lg-occ"></i>' + M.cal_occupato + "</span>" + (o.prezzi ? '<span class="cal__leg-pz">' + M.cal_prezzi + "</span>" : "") + "</div>"
+    var leg = conDati ? '<div class="cal__leg"><span><i class="lg-free"></i>' + M.cal_libero + '</span><span><i class="lg-occ"></i>' + M.cal_occupato + "</span>" + (o.prezzi && DISPO.prezzi ? '<span class="cal__leg-pz">' + M.cal_prezzi + "</span>" : "") + "</div>"
       : '<div class="cal__leg"><span class="cal__nodati">' + (o.nota || M.cal_nodati) + "</span></div>";
     var az = '<div class="cal__az"><button type="button" class="cal__clear">' + M.cal_cancella + "</button>" +
       (o.inline ? (o.onBook ? '<button type="button" class="btn btn--gold btn--sm cal__book"' + (this.a && this.p ? "" : " disabled") + ">" + M.cal_prenota + "</button>" : "") : '<button type="button" class="btn btn--sm cal__done">' + M.cal_chiudi + "</button>") + "</div>";
@@ -377,13 +378,40 @@
     f._set = function (a, p) { aggiornaCampi(f, a, p); if (cal) cal.set(a, p); };
   }
 
-  /* ---------- prenotazione: la richiesta parte su WhatsApp, gia' scritta con alloggio, date (gg/mm/aaaa) e ospiti */
+  /* ---------- prenotazione: online sul motore Krossbooking se l'alloggio c'e', altrimenti su WhatsApp,
+     con il messaggio gia' scritto con alloggio, date (gg/mm/aaaa) e ospiti */
   function values(f) {
     var g = function (n) { var el = $("[name=" + n + "]", f); return el ? el.value : ""; };
     return { arrivo: g("arrivo"), partenza: g("partenza"), ospiti: g("ospiti"), casa: g("casa") };
   }
   function errore(f, t) { var m = $(".js-msg", f); if (m) m.textContent = t; }
   var q = new URLSearchParams(location.search);
+  /* l'alloggio del modulo: la tendina della ricerca ("" = tutti) o quello fisso della scheda */
+  function unitaDi(f) { var sel = $("select[name=casa]", f); return sel ? sel.value : (f.getAttribute("data-unita") || ""); }
+  /* indirizzo del motore con alloggio, date e ospiti; null se quell'alloggio (o «tutti») non si prenota online */
+  function kUrl(id, v) {
+    var K = S.kross; if (!K) return null;
+    var u = id ? K.u[id] : null;
+    if ((id && !u) || (!id && !K.tutte)) return null;
+    var l = gtLingua() || LANG; if (K.l.indexOf(l) < 0) l = "en";
+    return K.m + "/" + (u && u.p ? u.p : "book/step1") + "?from=" + v.arrivo + "&to=" + v.partenza + "&guests=" + (v.ospiti || 2) + "&lang=" + l;
+  }
+  /* ricerca: gli ospiti non possono superare la capienza dell'alloggio scelto; il pulsante dice dove si prenota */
+  function aggiornaRicerca(f) {
+    var sel = $("select[name=casa]", f), o = $("select[name=ospiti]", f);
+    if (sel && o) {
+      var op = sel.options[sel.selectedIndex], mx = +((op && op.getAttribute("data-max")) || 0);
+      $$("option", o).forEach(function (x) { x.disabled = !!mx && +x.value > mx; });
+      if (mx && +o.value > mx) o.value = String(mx);
+    }
+    var b = $(".js-prenota", f);
+    if (b) {
+      var online = !!kUrl(unitaDi(f), {});
+      b.classList.toggle("btn--gold", online); b.classList.toggle("btn--wa", !online);
+      $$(".js-lk", b).forEach(function (x) { x.hidden = !online; });
+      $$(".js-lw", b).forEach(function (x) { x.hidden = online; });
+    }
+  }
 
   $$("form[data-book]").forEach(function (f) {
     legaCalendario(f);
@@ -393,11 +421,15 @@
     if (o && so && $$("option", o).some(function (x) { return x.value === so; })) o.value = so;
     if (o) o.addEventListener("change", function () { store.set("ospiti", o.value); var mx = ospitiMax(f); errore(f, mx && +o.value > mx ? fmt(M.troppi, { n: mx }) : ""); });
     var casaSel = $("select[name=casa]", f);
+    if (casaSel) casaSel.addEventListener("change", function () { aggiornaRicerca(f); });
+    aggiornaRicerca(f);
     f.addEventListener("submit", function (e) {
       e.preventDefault();
       var v = values(f), casa = casaDi(f), nome = f.getAttribute("data-nome") || "";
       if (!v.arrivo || !v.partenza) { errore(f, M.err_date); var b = $("[data-apri=arrivo]", f); b && b.click(); return; }
       if (casa && casa !== "*" && haDati(casa) && !periodoLibero(casa, v.arrivo, v.partenza)) { errore(f, M.cal_occ); return; }
+      var ku = kUrl(unitaDi(f), v);
+      if (ku) { window.open(ku, "_blank", "noopener"); return; }
       if (casaSel) { var opt = casaSel.options[casaSel.selectedIndex]; nome = opt && opt.value ? opt.getAttribute("data-nome") || opt.textContent : ""; }
       // barra di ricerca su «tutte»: la domanda e' quale alloggio e' libero
       var dati = { casa: nome, arrivo: itDate(v.arrivo), partenza: itDate(v.partenza), ospiti: v.ospiti || 2 };
@@ -440,16 +472,43 @@
     });
   }
 
-  /* dati di disponibilita': file JS pubblicato dal server (il server nega i .json). Senza SITO.dispo
-     i calendari restano semplici scelte di date, senza notti occupate ne' prezzi. */
+  function dispoPronta() {
+    CALS.forEach(function (c) { c.render(); });
+    $$("form[data-book]").forEach(function (f) { aggiornaCampi(f, $("[name=arrivo]", f).value, $("[name=partenza]", f).value); });
+    segnaElenco();
+  }
+  /* disponibilita' dal vivo dal motore Krossbooking (CORS aperto, nessun cookie): per ogni alloggio le notti libere
+     dei prossimi ~12 mesi, {"AAAA-MM-GG": {mi: soggiorno minimo, ca: "1" se quel giorno non si arriva}}.
+     Nel periodo coperto le date assenti sono occupate. Se il motore non risponde i calendari restano
+     semplici scelte di date e la prenotazione funziona lo stesso. */
+  function kAva(a) {
+    var ks = Object.keys(a).sort(), out = {}, fine = ks[ks.length - 1];
+    for (var s = today(); s <= fine; s = addDays(s, 1)) {
+      var x = a[s];
+      out[s] = x ? [1, null, Math.max(1, +x.mi || 1), String(x.ca) === "1" ? 0 : 1] : [0, null, 1, 1];
+    }
+    return out;
+  }
+  function caricaKross() {
+    var K = S.kross, ids = Object.keys(K.u), uni = {}, fatti = 0;
+    if (!ids.length || !window.fetch) { segnaElenco(); return; }
+    ids.forEach(function (id) {
+      fetch("https://endpoint.krossbooking.com/widget/get-ava/?be_id=" + encodeURIComponent(K.be) + "&idrt=" + K.u[id].i + "&hotel_id=" + encodeURIComponent(K.h), { credentials: "omit" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { var a = j && j.availability; if (a && !Array.isArray(a) && Object.keys(a).length) uni[id] = kAva(a); })
+        .catch(function () {})
+        .then(function () { if (++fatti === ids.length) { if (Object.keys(uni).length) DISPO = { unita: uni }; dispoPronta(); } });
+    });
+  }
+  /* vecchio file di disponibilita' pubblicato dal server (il server nega i .json): resta per SITO.dispo */
   function caricaDispo() {
     var s = d.createElement("script");
     s.src = root + "dati/disponibilita.js?t=" + Math.floor(Date.now() / 6e5);
-    s.onload = function () { DISPO = window.DISPO || null; CALS.forEach(function (c) { c.render(); }); $$("form[data-book]").forEach(function (f) { aggiornaCampi(f, $("[name=arrivo]", f).value, $("[name=partenza]", f).value); }); segnaElenco(); };
+    s.onload = function () { DISPO = window.DISPO || null; dispoPronta(); };
     s.onerror = function () { segnaElenco(); };
     d.body.appendChild(s);
   }
-  if (S.dispo) caricaDispo(); else segnaElenco();
+  if (S.kross) caricaKross(); else if (S.dispo) caricaDispo(); else segnaElenco();
 
   /* ---------- modulo contatti -> WhatsApp o email */
   var cf = $("#contatto");

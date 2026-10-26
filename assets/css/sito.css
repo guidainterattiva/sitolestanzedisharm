@@ -924,3 +924,41 @@ a.gcard:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .fl-pt{background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 20%27%3E%3Cpath fill=%27%23da291c%27 d=%27M0 0h30v20H0z%27/%3E%3Cpath fill=%27%23046a38%27 d=%27M0 0h12v20H0z%27/%3E%3Ccircle cx=%2712%27 cy=%2710%27 r=%274.3%27 fill=%27none%27 stroke=%27%23ffe000%27 stroke-width=%271.4%27/%3E%3Cpath d=%27M10.4 7.9h3.2v3.1q0 1.6-1.6 2.2-1.6-.6-1.6-2.2z%27 fill=%27%23fff%27 stroke=%27%23da291c%27 stroke-width=%27.7%27/%3E%3C/svg%3E")}
 .fl-pl{background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 8 5%27%3E%3Cpath fill=%27%23fff%27 d=%27M0 0h8v2.5H0z%27/%3E%3Cpath fill=%27%23dc143c%27 d=%27M0 2.5h8V5H0z%27/%3E%3C/svg%3E")}
 .fl-ar{background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 20%27%3E%3Cpath fill=%27%23006c35%27 d=%27M0 0h30v20H0z%27/%3E%3Cpath d=%27M7.5 9c1-2 2-2 2.5 0s1.5 2 2.5 0 1.5-2 2.5 0 1.5 2 2.5 0 1.5-2 2.5 0 1.5 2 2.5 0%27 fill=%27none%27 stroke=%27%23fff%27 stroke-width=%27.9%27/%3E%3Cpath d=%27M7 13.6h15.6l1.6-.6v1.4H7z%27 fill=%27%23fff%27/%3E%3Cpath d=%27M8.6 12.4v2.6%27 stroke=%27%23fff%27 stroke-width=%27.9%27/%3E%3C/svg%3E")}
+
+/* ---------- prenotazione online (Krossbooking, 26/10/2026) */
+.js-prenota [hidden],.book [hidden]{display:none}
+.book .book__wa{margin-top:10px}
+/* «Ci trovi anche su»: lo stesso alloggio sui portali, sotto il calendario della scheda */
+.anche{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:22px;padding:16px 18px;border:1px solid var(--line);background:var(--white)}
+.anche__t{margin:0;font:600 10.5px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink)}
+.anche__l{display:flex;flex-wrap:wrap;gap:8px}
+.anche__l a{display:inline-flex;align-items:baseline;gap:6px;padding:7px 14px;border:1px solid var(--line);font:500 14.5px/1.2 var(--sans);color:var(--dark);text-decoration:none;transition:border-color .2s,background .2s}
+.anche__l a:hover,.anche__l a:focus-visible{border-color:var(--dark);background:var(--ivory-mid);color:var(--dark)}
+.anche__l small{font-size:12px;color:var(--ink-soft)}
+.anche__n{flex-basis:100%;margin:0;font-size:13px;color:var(--ink-soft)}
+/* credito delle foto di Wikimedia Commons, sopra la foto (testate con foto, pagina Sharm el Sheikh) */
+.foto-cr{position:absolute;right:0;bottom:0;z-index:3;margin:0;max-width:100%;padding:4px 10px;background:rgba(0,0,0,.62);color:#fff;font-size:11px;line-height:1.4}
+/* nelle testate a tutta pagina il fondo e' coperto dalla barra di ricerca: il credito va in alto, sotto il menu */
+.hfull .foto-cr{top:calc(var(--hdr) + 6px);bottom:auto}
+.foto-cr a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.foto-cr a:hover,.foto-cr a:focus-visible{color:#fff}
+/* tra 1181 e 1399 px il menu completo non ci stava: il pulsante «Prenota» usciva dallo schermo (Sharm da 1200 a 1366 px,
+   Roma a 1200 e, con «a Roma» nel sottotitolo, anche a 1280). Si stringono spazi e spaziatura delle lettere (26/10/2026) */
+@media (min-width:1181px) and (max-width:1399px){
+ .hdr__in{gap:14px}
+ .nav__list{gap:clamp(9px,.9vw,14px)}
+ .nav__list a{letter-spacing:.08em}
+ .hdr__act{gap:10px}
+}
+/* ---------- «I nostri partner» nella pagina Servizi (26/10/2026) */
+.partners{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.partners li{display:flex}
+.ptn{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;background:var(--white);border:1px solid var(--line);padding:22px 18px 18px;text-decoration:none;color:var(--ink);transition:border-color .25s,transform .25s,box-shadow .25s}
+a.ptn:hover,a.ptn:focus-visible{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--sh);color:var(--ink)}
+.ptn__logo{height:70px;width:100%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ptn__logo img{max-height:70px;max-width:min(100%,170px);width:auto;height:auto;object-fit:contain}
+.ptn__testo{font:500 22px/1.1 var(--serif);color:var(--dark)}
+.ptn__n{font:600 11px/1.35 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--dark)}
+.ptn__d{margin-top:6px;font-size:13px;line-height:1.5;color:var(--ink-soft)}
+@media (max-width:560px){.partners{grid-template-columns:1fr 1fr;gap:10px}.ptn{padding:16px 12px 14px}.ptn__logo{height:52px;margin-bottom:12px}.ptn__logo img{max-height:52px}.ptn__n{font-size:10px;letter-spacing:.1em}.ptn__d{font-size:12px}}
+@media (prefers-reduced-motion:reduce){.ptn{transition:none}a.ptn:hover{transform:none}}
