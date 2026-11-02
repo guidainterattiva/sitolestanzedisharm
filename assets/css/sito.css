@@ -208,6 +208,7 @@ strong{font-weight:600;color:var(--dark)}
 .drawer ul{list-style:none;margin:0;padding:0}
 .drawer li a{display:block;font:500 30px/1.25 var(--serif);color:var(--dark);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line)}
 .drawer__foot{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.drawer__foot .btn--gold{flex:1 1 100%}
 .lang--big a{padding:12px 16px;font-size:13px}
 @media (max-width:1180px){.nav{display:none}.burger{display:flex}.hdr__act{margin-left:auto}}
 @media (max-width:560px){:root{--hdr:70px}.brand__logo{width:42px;height:42px}.brand__nome{font-size:20px}.brand__sub{font-size:9.5px;letter-spacing:.18em}.hdr__cta,.hdr .lang{display:none}}

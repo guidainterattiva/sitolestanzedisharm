@@ -187,10 +187,10 @@
   function info(casa, s) {
     if (!DISPO || !DISPO.unita) return null;
     if (casa && DISPO.unita[casa]) return DISPO.unita[casa][s] || null;
-    if (casa === "*") {  // "tutte": libero se almeno una casa e' libera
-      var ks = Object.keys(DISPO.unita), any = false, known = false;
-      for (var i = 0; i < ks.length; i++) { var v = DISPO.unita[ks[i]][s]; if (v) { known = true; if (v[0]) any = true; } }
-      return known ? [any ? 1 : 0, null, 1, 1] : null;
+    if (casa === "*") {  // "tutte": libero se almeno una casa e' libera; soggiorno minimo e arrivo sono quelli delle case libere
+      var ks = Object.keys(DISPO.unita), any = false, known = false, mi = 0, ci = 0;
+      for (var i = 0; i < ks.length; i++) { var v = DISPO.unita[ks[i]][s]; if (v) { known = true; if (v[0]) { any = true; mi = mi ? Math.min(mi, v[2]) : v[2]; ci = ci || v[3]; } } }
+      return known ? [any ? 1 : 0, null, mi || 1, any ? ci : 1] : null;
     }
     return null;
   }
@@ -332,7 +332,7 @@
   function ospitiMax(f) { return +(f.getAttribute("data-max") || 0); }
   function casaDi(f) {
     var sel = $("select[name=casa]", f);
-    if (sel) { var op = sel.options[sel.selectedIndex]; return op && op.getAttribute("data-dispo") ? op.value : (sel.value ? null : (f.hasAttribute("data-dispo-tutte") ? "*" : null)); }
+    if (sel) { var op = sel.options[sel.selectedIndex]; return op && op.hasAttribute("data-dispo") ? op.value : (sel.value ? null : (f.hasAttribute("data-dispo-tutte") ? "*" : null)); }
     return f.getAttribute("data-dispo") || null;
   }
   function aggiornaCampi(f, a, p) {
@@ -388,14 +388,17 @@
   var q = new URLSearchParams(location.search);
   /* l'alloggio del modulo: la tendina della ricerca ("" = tutti) o quello fisso della scheda */
   function unitaDi(f) { var sel = $("select[name=casa]", f); return sel ? sel.value : (f.getAttribute("data-unita") || ""); }
+  /* lingua del motore: quella della pagina o di Google Translate, se il motore ce l'ha; le altre aprono in inglese */
+  function kLingua() { var l = gtLingua() || LANG; return S.kross.l.indexOf(l) < 0 ? "en" : l; }
   /* indirizzo del motore con alloggio, date e ospiti; null se quell'alloggio (o «tutti») non si prenota online */
   function kUrl(id, v) {
     var K = S.kross; if (!K) return null;
     var u = id ? K.u[id] : null;
     if ((id && !u) || (!id && !K.tutte)) return null;
-    var l = gtLingua() || LANG; if (K.l.indexOf(l) < 0) l = "en";
-    return K.m + "/" + (u && u.p ? u.p : "book/step1") + "?from=" + v.arrivo + "&to=" + v.partenza + "&guests=" + (v.ospiti || 2) + "&lang=" + l;
+    return K.m + "/" + (u && u.p ? u.p : "book/step1") + "?from=" + v.arrivo + "&to=" + v.partenza + "&guests=" + (v.ospiti || 2) + "&lang=" + kLingua();
   }
+  /* «Prenota» che apre subito il motore (KROSS["diretto"] in dati.py): nella lingua scelta con Google Translate */
+  $$("a[data-motore]").forEach(function (a) { a.addEventListener("click", function () { if (S.kross) a.href = S.kross.m + "/" + kLingua(); }); });
   /* ricerca: gli ospiti non possono superare la capienza dell'alloggio scelto; il pulsante dice dove si prenota */
   function aggiornaRicerca(f) {
     var sel = $("select[name=casa]", f), o = $("select[name=ospiti]", f);
@@ -427,7 +430,7 @@
       e.preventDefault();
       var v = values(f), casa = casaDi(f), nome = f.getAttribute("data-nome") || "";
       if (!v.arrivo || !v.partenza) { errore(f, M.err_date); var b = $("[data-apri=arrivo]", f); b && b.click(); return; }
-      if (casa && casa !== "*" && haDati(casa) && !periodoLibero(casa, v.arrivo, v.partenza)) { errore(f, M.cal_occ); return; }
+      if (casa && haDati(casa) && !periodoLibero(casa, v.arrivo, v.partenza)) { errore(f, M.cal_occ); return; }
       var ku = kUrl(unitaDi(f), v);
       if (ku) { window.open(ku, "_blank", "noopener"); return; }
       if (casaSel) { var opt = casaSel.options[casaSel.selectedIndex]; nome = opt && opt.value ? opt.getAttribute("data-nome") || opt.textContent : ""; }
@@ -490,11 +493,14 @@
     return out;
   }
   function caricaKross() {
-    var K = S.kross, ids = Object.keys(K.u), uni = {}, fatti = 0;
+    var K = S.kross, ids = Object.keys(K.u), uni = {}, fatti = 0, perCamera = {};
     if (!ids.length || !window.fetch) { segnaElenco(); return; }
     ids.forEach(function (id) {
-      fetch("https://endpoint.krossbooking.com/widget/get-ava/?be_id=" + encodeURIComponent(K.be) + "&idrt=" + K.u[id].i + "&hotel_id=" + encodeURIComponent(K.h), { credentials: "omit" })
+      var i = K.u[id].i;  // piu' alloggi possono puntare alla stessa camera del motore: una richiesta sola
+      perCamera[i] = perCamera[i] || fetch("https://endpoint.krossbooking.com/widget/get-ava/?be_id=" + encodeURIComponent(K.be) + "&idrt=" + i + "&hotel_id=" + encodeURIComponent(K.h), { credentials: "omit" })
         .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; });
+      perCamera[i]
         .then(function (j) { var a = j && j.availability; if (a && !Array.isArray(a) && Object.keys(a).length) uni[id] = kAva(a); })
         .catch(function () {})
         .then(function () { if (++fatti === ids.length) { if (Object.keys(uni).length) DISPO = { unita: uni }; dispoPronta(); } });
