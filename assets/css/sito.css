@@ -871,7 +871,8 @@ html.translated-rtl main :is(p,h1,h2,h3,h4,li,dd,dt,summary,figcaption,blockquot
 
 /* ---------- «Le nostre altre strutture»: in fondo alla home, card con foto (v2 del 03/10/2026) */
 .gruppo{border-top:1px solid var(--line)}
-.gruppo__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.gruppo__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+@media (min-width:861px){.gruppo__grid{max-width:780px;margin-inline:auto}}
 .js .gruppo__i.rise{transform:translateY(36px);transition:transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
 .js .gruppo__i.rise.in{transform:none}
 .gcard{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%;aspect-ratio:4/5;overflow:hidden;isolation:isolate;color:#fff;text-decoration:none;background:var(--dark);box-shadow:0 22px 44px -30px rgba(0,0,0,.6);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
