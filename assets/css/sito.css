@@ -944,6 +944,26 @@ a.gcard:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .hfull .foto-cr{top:calc(var(--hdr) + 6px);bottom:auto}
 .foto-cr a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .foto-cr a:hover,.foto-cr a:focus-visible{color:#fff}
+/* credito foto: il testo prendeva il grigio scuro di .credito e spariva sulla barra nera (24/11/2026) */
+.foto-cr .credito{display:inline;margin:0;font-size:inherit;color:inherit}
+/* pagina Le stanze: il credito sta sotto la barra di ricerca, non sopra la foto */
+.foto-cr--sotto{position:static;background:none;color:var(--ink-soft);text-align:right;padding-top:12px;padding-bottom:0;padding-left:var(--gut);padding-right:var(--gut);font-size:12px;max-width:var(--wrap)}
+.foto-cr--sotto a:hover,.foto-cr--sotto a:focus-visible{color:var(--dark)}
+/* telefono, pagina Sharm: su Safari iPhone l'altezza data solo da aspect-ratio con la foto in posizione assoluta si azzerava
+   e le tre foto sparivano. Ora l'altezza e' esplicita (foto nel flusso, 4:3) e il credito sta sotto la foto, in chiaro */
+@media (max-width:860px){
+ .dest .split__img{display:block;aspect-ratio:auto;min-height:0}
+ .dest .split__img img{position:static;display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+ .dest .split__img .foto-cr{position:static;background:none;color:var(--ink-soft);padding:8px var(--gut) 0;font-size:12px}
+ .dest .split__img .foto-cr a:hover,.dest .split__img .foto-cr a:focus-visible{color:var(--dark)}
+}
+/* servizi: nel codice il prezzo segue il titolo (modalita' lettura), a video resta sopra come prima */
+.srv__i{display:flex;flex-direction:column}
+.srv__i > .ic{order:0}
+.srv__i > .srv__x{order:1}
+.srv__i > h3{order:2}
+.srv__i > p:not(.srv__x){order:3}
+.srv__i > .link-arr{order:4}
 /* tra 1181 e 1399 px il menu completo non ci stava: il pulsante «Prenota» usciva dallo schermo (Sharm da 1200 a 1366 px,
    Roma a 1200 e, con «a Roma» nel sottotitolo, anche a 1280). Si stringono spazi e spaziatura delle lettere (26/10/2026) */
 @media (min-width:1181px) and (max-width:1399px){
